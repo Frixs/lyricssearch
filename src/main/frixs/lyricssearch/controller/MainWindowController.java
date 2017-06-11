@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXDrawer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.input.MouseEvent;
 import main.frixs.lyricssearch.init.Program;
@@ -52,7 +51,7 @@ public class MainWindowController {
         try {
             // load FXML file
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(Program.PATH_TO_VIEW +"SearchMenu.fxml"));
+            loader.setLocation(getClass().getResource(Program.PATH_TO_SRC +"view/SearchMenu.fxml"));
             Parent searchMenuWrapper = loader.load();
 
             // inject this controller to searchMenu controller as a parent controller

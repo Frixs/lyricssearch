@@ -2,6 +2,7 @@ package main.frixs.lyricssearch.controller;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
+import main.frixs.lyricssearch.init.Program;
 
 /**
  * @author Frixs
@@ -9,7 +10,7 @@ import javafx.fxml.FXML;
 public class PreviewTabController {
     /** reference to MainWindow controller */
     private MainWindowController mainWindowController;
-
+    /** searchMenu open BTN */
     @FXML private JFXButton searchMenuOpenBTN;
 
     /**

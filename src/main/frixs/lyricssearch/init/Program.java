@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.frixs.lyricssearch.controller.ProgramController;
 
@@ -22,7 +23,7 @@ public class Program extends Application {
     public static final String      VERSION_PREFIX  = "v";
     public static final int         MIN_HEIGHT      = 480;
     public static final int         MIN_WIDTH       = 640;
-    public static final String      PATH_TO_VIEW    = "/main/frixs/lyricssearch/view/";
+    public static final String      PATH_TO_SRC     = "/main/frixs/lyricssearch/";
 
     public static void main(String[] args) {
         launch(args);
@@ -33,6 +34,7 @@ public class Program extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle(APP_NAME + " " + VERSION_PREFIX + VERSION);
 
+        // load root layout
         initRootLayout();
     }
 
@@ -43,7 +45,7 @@ public class Program extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Program.class.getResource(Program.PATH_TO_VIEW +"Program.fxml"));
+            loader.setLocation(Program.class.getResource(Program.PATH_TO_SRC +"view/Program.fxml"));
             rootLayout = loader.load();
 
             ProgramController programController = loader.getController();
