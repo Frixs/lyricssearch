@@ -6,12 +6,11 @@ import javafx.fxml.FXML;
 /**
  * @author Frixs
  */
-public class SearchMenuController {
+public class PreviewTabController {
     /** reference to MainWindow controller */
     private MainWindowController mainWindowController;
 
-    /** searchMenu close BTN */
-    @FXML private JFXButton searchMenuCloseBTN;
+    @FXML private JFXButton searchMenuOpenBTN;
 
     /**
      * default initialize
@@ -29,7 +28,7 @@ public class SearchMenuController {
     }
 
     // Getters
-    public JFXButton getSearchMenuCloseBTN() {
-        return searchMenuCloseBTN;
+    public JFXButton getSearchMenuOpenBTN() {
+        return searchMenuOpenBTN;
     }
 }

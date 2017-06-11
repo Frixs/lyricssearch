@@ -16,18 +16,24 @@ import java.io.IOException;
  * @author Frixs
  */
 public class MainWindowController {
+    /** search side menu width in pixels */
+    private int searchSideMenuWidth = 260;
     /** reference to Program controller */
     private ProgramController programController;
     /** reference to SearchMenu controller */
     @FXML private SearchMenuController searchMenuController;
+    /** reference to PreviewTab controller */
+    @FXML private PreviewTabController previewTabController;
 
-    @FXML private AnchorPane searchPane;
-    @FXML private JFXButton searchMenuCloseBTN;
+    /** searchMenu drawer */
     @FXML private JFXDrawer searchMenuDrawer;
 
+    /**
+     * default initialize
+     */
     @FXML
     private void initialize() {
-        //searchMenuController.injectMainWindowController(this);
+        previewTabController.injectMainWindowController(this);
         includeSearchMenu();
     }
 
@@ -56,18 +62,23 @@ public class MainWindowController {
             // set drawer side pane
             searchMenuDrawer.setSidePane(searchMenuWrapper);
 
+            // set menu width
+            searchMenuDrawer.setDefaultDrawerSize(searchSideMenuWidth);
+            searchMenuDrawer.setPrefWidth(searchSideMenuWidth);
+            searchMenuDrawer.setTranslateX(-searchSideMenuWidth);
+
             // add event handler to search BTN - open & close
-            searchMenuCloseBTN.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-                if(searchMenuDrawer.isShown()) {
-                    searchMenuDrawer.close();
-                } else {
-                    searchMenuDrawer.open();
-                }
+            previewTabController.getSearchMenuOpenBTN().addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+                searchMenuDrawer.open();
+                searchMenuDrawer.setTranslateX(0);
             });
 
             // add event handler to close BTN
-            searchMenuCloseBTN.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+            searchMenuController.getSearchMenuCloseBTN().addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
                 searchMenuDrawer.close();
+                searchMenuDrawer.setOnDrawerClosed(event -> {
+                    searchMenuDrawer.setTranslateX(-searchSideMenuWidth);
+                });
             });
         } catch (IOException e) {
             e.printStackTrace();

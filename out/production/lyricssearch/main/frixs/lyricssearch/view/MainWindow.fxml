@@ -2,32 +2,35 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
-<?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXRadioButton?>
-<?import javafx.scene.control.ButtonBar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.frixs.lyricssearch.controller.MainWindowController">
-   <top>
-      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <buttons>
-            <JFXRadioButton />
-            <JFXRadioButton />
-            <JFXRadioButton />
-            <JFXButton />
-        </buttons>
-      </ButtonBar>
-   </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="searchPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <JFXHamburger fx:id="hamburger" layoutX="536.0" layoutY="43.0" />
-                  <JFXDrawer fx:id="searchMenuDrawer" defaultDrawerSize="260.0" prefHeight="360.0" prefWidth="260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-               </children>
-            </AnchorPane>
+            <fx:include fx:id="previewTab" source="PreviewTab.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <JFXDrawer fx:id="searchMenuDrawer" defaultDrawerSize="0.0" prefHeight="360.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children></AnchorPane>
    </center>
+   <top>
+      <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXRadioButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="130.0" text="MANAGEMENT" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="0.0">
+               <toggleGroup>
+                  <ToggleGroup fx:id="mainMenu" />
+               </toggleGroup></JFXRadioButton>
+            <JFXRadioButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="105.0" text="ADD NEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="0.0" />
+            <JFXRadioButton alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" selected="true" text="PREVIEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="-5.0" AnchorPane.topAnchor="0.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXRadioButton>
+            <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="\\uf013" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>
