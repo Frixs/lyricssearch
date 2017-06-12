@@ -52,7 +52,8 @@ public class Program extends Application {
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout, MIN_WIDTH, MIN_HEIGHT);
-            //scene.getStylesheets().add("/main/resources/css/main.css");
+            scene.getStylesheets().add(Program.PATH_TO_SRC +"resources/css/program.css");
+            scene.getStylesheets().add(Program.PATH_TO_SRC +"resources/css/mainWindow.css");
 
             primaryStage.setScene(scene);
 

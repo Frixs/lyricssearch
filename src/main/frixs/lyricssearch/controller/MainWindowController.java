@@ -62,9 +62,9 @@ public class MainWindowController {
             searchMenuDrawer.setSidePane(searchMenuWrapper);
 
             // set menu width
+            searchMenuDrawer.setTranslateX(-searchSideMenuWidth);
             searchMenuDrawer.setDefaultDrawerSize(searchSideMenuWidth);
             searchMenuDrawer.setPrefWidth(searchSideMenuWidth);
-            searchMenuDrawer.setTranslateX(-searchSideMenuWidth);
 
             // add event handler to search BTN - open & close
             previewTabController.getSearchMenuOpenBTN().addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {

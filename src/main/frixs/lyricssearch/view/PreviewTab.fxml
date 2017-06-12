@@ -2,23 +2,53 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.glyphfont.Glyph?>
 
 <AnchorPane fx:id="previewTab" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.frixs.lyricssearch.controller.PreviewTabController">
    <children>
       <BorderPane layoutX="1.0" layoutY="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="45.0" BorderPane.alignment="TOP_LEFT">
+            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" BorderPane.alignment="TOP_LEFT">
                <children>
-                  <Label alignment="CENTER" text="Title" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <JFXButton fx:id="searchMenuOpenBTN" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="45.0" ripplerFill="#0f9d58" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <graphic>
-                        <Glyph fontFamily="FontAwesome" fontSize="24.0" icon="SEARCH" />
-                     </graphic></JFXButton>
-                  <JFXToggleButton contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="104.0" text="Queue" toggleColor="#0f9d58" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="45.0" styleClass="menu-sub">
+                           <children>
+                              <Label alignment="CENTER" styleClass="title-song" text="Title" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <JFXButton fx:id="searchMenuOpenBTN" focusTraversable="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="45.0" styleClass="btn-norm-dark" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <graphic>
+                                    <Glyph fontFamily="FontAwesome" fontSize="24.0" icon="SEARCH" styleClass="glyph" />
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                              <JFXToggleButton contentDisplay="RIGHT" focusTraversable="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="106.0" styleClass="btn-norm-dark" text="QUEUE" toggleColor="#0f9d58" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></JFXToggleButton>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" styleClass="menu-grandsub">
+                           <children>
+                              <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <JFXButton focusTraversable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" styleClass="btn-norm-light" text="ADD TO QUEUE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></JFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
          </top>

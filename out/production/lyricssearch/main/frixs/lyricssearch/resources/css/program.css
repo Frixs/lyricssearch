@@ -1,0 +1,86 @@
+.menu-main {
+    -fx-background-color: #0f9d58;
+}
+
+.menu-main .radio-BTN {
+    -fx-font-family: "Tahoma";
+    -fx-text-fill: #fff;
+}
+
+.menu-main .radio-BTN:hover {
+    -fx-background-color: #0d864c;
+}
+
+.menu-main .radio-BTN:selected {
+    -fx-background-color: #056637;
+}
+
+.menu-sub {
+    -fx-background-color: #5a5a5a;
+}
+
+.menu-grandsub {
+    -fx-background-color: #ddd;
+}
+
+.button {
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+
+// /
+//  BUTTONS
+// /
+
+.btn-norm-color {
+    -fx-font-family: "Tahoma";
+    -fx-text-fill: #fff;
+    -fx-background-color: #0d864c;
+    -fx-background-radius: 0;
+}
+
+.btn-norm-color .glyph {
+    -fx-text-fill: #fff;
+}
+
+.btn-norm-color:hover {
+    -fx-text-fill: #fff;
+    -fx-background-color: #056637;
+}
+
+
+
+.btn-norm-dark {
+    -fx-font-family: "Tahoma";
+    -fx-text-fill: #fff;
+    -fx-background-color: #4f4f4f;
+    -fx-background-radius: 0;
+}
+
+.btn-norm-dark .glyph {
+    -fx-text-fill: #fff;
+}
+
+.btn-norm-dark:hover {
+    -fx-text-fill: #fff;
+    -fx-background-color: #3f3f3f;
+}
+
+
+
+.btn-norm-light {
+    -fx-font-family: "Tahoma";
+    -fx-text-fill: #000;
+    -fx-background-color: #ccc;
+    -fx-background-radius: 0;
+}
+
+.btn-norm-light .glyph {
+    -fx-text-fill: #000;
+}
+
+.btn-norm-light:hover {
+    -fx-text-fill: #000;
+    -fx-background-color: #aaa;
+}

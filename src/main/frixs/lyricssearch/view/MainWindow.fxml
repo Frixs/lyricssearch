@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -18,22 +19,46 @@
          </children></AnchorPane>
    </center>
    <top>
-      <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" styleClass="menu-main" BorderPane.alignment="CENTER">
          <children>
-            <JFXRadioButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="130.0" text="MANAGEMENT" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="0.0">
+            <JFXRadioButton focusTraversable="false" layoutX="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="119.0" styleClass="radio-BTN" text="MANAGEMENT" AnchorPane.leftAnchor="187.0" AnchorPane.topAnchor="0.0">
                <toggleGroup>
                   <ToggleGroup fx:id="mainMenu" />
-               </toggleGroup></JFXRadioButton>
-            <JFXRadioButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="105.0" text="ADD NEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="0.0" />
-            <JFXRadioButton alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" selected="true" text="PREVIEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="-5.0" AnchorPane.topAnchor="0.0">
+               </toggleGroup>
+               <padding>
+                  <Insets bottom="-14.0" left="-7.0" />
+               </padding>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXRadioButton>
+            <JFXRadioButton focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="95.0" styleClass="radio-BTN" text="ADD NEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="0.0">
+               <padding>
+                  <Insets bottom="-14.0" left="-7.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXRadioButton>
+            <JFXRadioButton alignment="CENTER_LEFT" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="92.0" selected="true" styleClass="radio-BTN" text="PREVIEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="-14.0" left="-7.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXRadioButton>
-            <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <JFXButton focusTraversable="false" graphicTextGap="0.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="40.0" styleClass="btn-norm-color" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <graphic>
-                  <Glyph fontFamily="FontAwesome" fontSize="18.0" icon="GEAR" />
+                  <Glyph fontFamily="FontAwesome" fontSize="18.0" icon="GEARS" styleClass="glyph" />
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
          </children>
       </AnchorPane>
