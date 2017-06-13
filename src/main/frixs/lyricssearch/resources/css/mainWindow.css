@@ -4,3 +4,7 @@
     -fx-text-fill: #fff;
     -fx-font-weight: bold;
 }
+
+.text-preview {
+    -fx-background-color: #fff;
+}
