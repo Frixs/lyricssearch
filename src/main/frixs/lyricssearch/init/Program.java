@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.frixs.lyricssearch.controller.ProgramController;
+import main.frixs.lyricssearch.service.Data;
 
 import java.io.IOException;
 
@@ -36,6 +37,9 @@ public class Program extends Application {
 
         // load root layout
         initRootLayout();
+
+        // load init data
+        initData();
     }
 
     /**
@@ -69,6 +73,13 @@ public class Program extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Initializes data
+     */
+    public void initData() {
+        Data.generateLoremIpsumData();
     }
 
     /**

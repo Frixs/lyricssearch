@@ -31,7 +31,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </JFXButton>
-                              <JFXToggleButton contentDisplay="RIGHT" focusTraversable="false" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="106.0" styleClass="btn-norm-dark" text="QUEUE" toggleColor="#0f9d58" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXToggleButton contentDisplay="RIGHT" focusTraversable="false" maxWidth="-Infinity" minWidth="-Infinity" onAction="#onActionQueueBTN" prefWidth="106.0" styleClass="btn-norm-dark" text="QUEUE" toggleColor="#0f9d58" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></JFXToggleButton>
@@ -62,7 +62,7 @@
                         <TextFlow prefHeight="200.0" prefWidth="200.0" styleClass="text-preview" BorderPane.alignment="CENTER" />
                      </center>
                      <right>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="250.0" styleClass="scrollpane-light" BorderPane.alignment="CENTER">
+                        <ScrollPane fx:id="queuePane" hbarPolicy="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="250.0" styleClass="scrollpane-light" BorderPane.alignment="CENTER">
                            <content>
                               <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" />
                            </content>
