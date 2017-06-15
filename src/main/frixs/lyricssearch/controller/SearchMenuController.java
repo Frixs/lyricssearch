@@ -3,10 +3,16 @@ package main.frixs.lyricssearch.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import main.frixs.lyricssearch.model.Song;
 import main.frixs.lyricssearch.service.Data;
 
@@ -15,14 +21,16 @@ import main.frixs.lyricssearch.service.Data;
  */
 public class SearchMenuController {
     /** reference to MainWindow controller */
-    private MainWindowController mainWindowController;
+    private MainWindowController    mainWindowController;
+    /** search box */
+    private TableView<Song>         searchBoxTV;
 
+    /** search wrapper border pane */
+    @FXML private BorderPane        searchBP;
     /** searchMenu close BTN */
     @FXML private JFXButton         searchMenuCloseBTN;
     /** search text field */
     @FXML private JFXTextField      searchField;
-    /** search box */
-    @FXML private TableView<Song>   searchBox;
     /** defines if search is set fulltext or not */
     @FXML private JFXCheckBox       searchFulltextCheckbox;
 
@@ -31,6 +39,13 @@ public class SearchMenuController {
      */
     @FXML
     private void initialize() {
+        // create table view as search box
+        initSearchBox();
+
+        // paste search box table to the search box wrapper
+        searchBP.setCenter(searchBoxTV);
+
+        // set search box functionality
         initSearch();
     }
 
@@ -40,6 +55,46 @@ public class SearchMenuController {
      */
     public void injectMainWindowController(MainWindowController mainWindowController) {
         this.mainWindowController = mainWindowController;
+    }
+
+    /**
+     * Initializes search box table
+     */
+    public void initSearchBox() {
+        searchBoxTV = new TableView<Song>();
+
+        TableColumn<Song, String> titleCol      = new TableColumn<Song, String>("Title");
+        TableColumn<Song, Song> queueBTNCol 	= new TableColumn<Song, Song>("Add Queue");
+
+        // col properties
+        titleCol.setSortable(false);
+        titleCol.setEditable(false);
+        queueBTNCol.setSortable(false);
+        queueBTNCol.setEditable(false);
+
+        // col settings
+        titleCol.setCellValueFactory(new PropertyValueFactory<Song, String>("title"));
+        queueBTNCol.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        queueBTNCol.setCellFactory(param -> new TableCell<Song, Song>() {
+            private final JFXButton btn = new JFXButton("Add to queue");
+
+            @Override
+            protected void updateItem(Song song, boolean empty) {
+                super.updateItem(song, empty);
+
+                if (song == null) {
+                    setGraphic(null);
+                    return;
+                }
+
+                // BTN event
+                setGraphic(btn);
+                btn.setOnAction(event -> getTableView().getItems().remove(song)); // TODO FilteredList doesnt work, we need to parse it to observable
+            }
+        });
+
+        // get cols together
+        searchBoxTV.getColumns().addAll(titleCol, queueBTNCol);
     }
 
     /**
@@ -71,7 +126,7 @@ public class SearchMenuController {
         SortedList<Song> sortedData = new SortedList<>(filteredData);
 
         // Add sorted (and filtered) data to the search box.
-        searchBox.setItems(sortedData);
+        searchBoxTV.setItems(sortedData);
     }
 
     // Getters
