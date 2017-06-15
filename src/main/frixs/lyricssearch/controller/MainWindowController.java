@@ -1,6 +1,5 @@
 package main.frixs.lyricssearch.controller;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +7,8 @@ import javafx.scene.Parent;
 
 import javafx.scene.input.MouseEvent;
 import main.frixs.lyricssearch.init.Program;
+import main.frixs.lyricssearch.service.Log;
+import main.frixs.lyricssearch.service.LogType;
 
 import java.io.IOException;
 
@@ -41,7 +42,11 @@ public class MainWindowController {
      * @param programController     instance of the main controller
      */
     public void injectProgramController(ProgramController programController) {
-        this.programController = programController;
+        if(this.programController == null) {
+            this.programController = programController;
+        } else {
+            Log.getInstance().log(LogType.WARNING, getClass().getName() +": You are trying to rewrite controller reference.");
+        }
     }
 
     /**
@@ -79,8 +84,25 @@ public class MainWindowController {
                     searchMenuDrawer.setTranslateX(-searchSideMenuWidth);
                 });
             });
+
+            Log.getInstance().log(LogType.CONFIG, getClass().getName() +": SearchMenu successfully included to layout!");
+
         } catch (IOException e) {
+            Log.getInstance().log(LogType.SEVERE, getClass().getName() +": SearchMenu cannot be loaded!");
             e.printStackTrace();
         }
+    }
+
+    // Getters
+    public ProgramController getProgramController() {
+        return programController;
+    }
+
+    public SearchMenuController getSearchMenuController() {
+        return searchMenuController;
+    }
+
+    public PreviewTabController getPreviewTabController() {
+        return previewTabController;
     }
 }

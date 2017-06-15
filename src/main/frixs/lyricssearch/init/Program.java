@@ -5,10 +5,11 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.frixs.lyricssearch.controller.ProgramController;
 import main.frixs.lyricssearch.service.Data;
+import main.frixs.lyricssearch.service.Log;
+import main.frixs.lyricssearch.service.LogType;
 
 import java.io.IOException;
 
@@ -70,6 +71,8 @@ public class Program extends Application {
 
             primaryStage.show();
 
+            Log.getInstance().log(LogType.CONFIG, getClass().getName() +": Root layout successfully loaded!");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,7 +90,7 @@ public class Program extends Application {
      */
     @Override
     public void stop() {
-        System.out.println("Application is closing.");
+        System.err.println("Application is closing.");
     }
 
     // Getters

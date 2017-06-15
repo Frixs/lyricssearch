@@ -7,7 +7,6 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -15,6 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import main.frixs.lyricssearch.model.Song;
 import main.frixs.lyricssearch.service.Data;
+import main.frixs.lyricssearch.service.Log;
+import main.frixs.lyricssearch.service.LogType;
 
 /**
  * @author Frixs
@@ -54,7 +55,11 @@ public class SearchMenuController {
      * @param mainWindowController     instance of the MainWindow controller
      */
     public void injectMainWindowController(MainWindowController mainWindowController) {
-        this.mainWindowController = mainWindowController;
+        if(this.mainWindowController == null) {
+            this.mainWindowController = mainWindowController;
+        } else {
+            Log.getInstance().log(LogType.WARNING, getClass().getName() +": You are trying to rewrite controller reference.");
+        }
     }
 
     /**
@@ -89,12 +94,14 @@ public class SearchMenuController {
 
                 // BTN event
                 setGraphic(btn);
-                btn.setOnAction(event -> getTableView().getItems().remove(song)); // TODO FilteredList doesnt work, we need to parse it to observable
+                btn.setOnAction(event -> mainWindowController.getPreviewTabController().addToQueue(song));
             }
         });
 
         // get cols together
         searchBoxTV.getColumns().addAll(titleCol, queueBTNCol);
+
+        Log.getInstance().log(LogType.CONFIG, getClass().getName() +": SearchBox view created!");
     }
 
     /**
@@ -127,10 +134,16 @@ public class SearchMenuController {
 
         // Add sorted (and filtered) data to the search box.
         searchBoxTV.setItems(sortedData);
+
+        Log.getInstance().log(LogType.CONFIG, getClass().getName() +": searchBox completely initialized!");
     }
 
     // Getters
     public JFXButton getSearchMenuCloseBTN() {
         return searchMenuCloseBTN;
+    }
+
+    public MainWindowController getMainWindowController() {
+        return mainWindowController;
     }
 }

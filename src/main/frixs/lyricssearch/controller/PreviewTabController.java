@@ -4,7 +4,9 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
-import main.frixs.lyricssearch.init.Program;
+import main.frixs.lyricssearch.model.Song;
+import main.frixs.lyricssearch.service.Log;
+import main.frixs.lyricssearch.service.LogType;
 
 /**
  * @author Frixs
@@ -33,12 +35,20 @@ public class PreviewTabController {
      * @param mainWindowController     instance of the MainWindow controller
      */
     public void injectMainWindowController(MainWindowController mainWindowController) {
-        this.mainWindowController = mainWindowController;
+        if(this.mainWindowController == null) {
+            this.mainWindowController = mainWindowController;
+        } else {
+            Log.getInstance().log(LogType.WARNING, getClass().getName() +": You are trying to rewrite controller reference.");
+        }
+    }
+
+    public void addToQueue(Song song) {
+        // TODO add to queue
     }
 
     // Events
     @FXML
-    void onActionQueueBTN(ActionEvent event) {
+    private void onActionQueueBTN(ActionEvent event) {
         if(queuePane.isVisible()) {
             queuePane.setVisible(false);
             queuePane.setPrefWidth(0);
@@ -51,5 +61,9 @@ public class PreviewTabController {
     // Getters
     public JFXButton getSearchMenuOpenBTN() {
         return searchMenuOpenBTN;
+    }
+
+    public MainWindowController getMainWindowController() {
+        return mainWindowController;
     }
 }

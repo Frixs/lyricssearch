@@ -2,6 +2,8 @@ package main.frixs.lyricssearch.controller;
 
 import javafx.fxml.FXML;
 import main.frixs.lyricssearch.init.Program;
+import main.frixs.lyricssearch.service.Log;
+import main.frixs.lyricssearch.service.LogType;
 
 /**
  * @author Frixs
@@ -22,7 +24,11 @@ public class ProgramController {
      * @param program       Program class instance
      */
     public void injectProgram(Program program) {
-        this.program = program;
+        if(this.program == null) {
+            this.program = program;
+        } else {
+            Log.getInstance().log(LogType.WARNING, getClass().getName() +": You are trying to rewrite controller reference.");
+        }
     }
 
     /**
@@ -31,5 +37,9 @@ public class ProgramController {
      */
     public Program getProgram() {
         return program;
+    }
+
+    public MainWindowController getMainWindowController() {
+        return mainWindowController;
     }
 }
