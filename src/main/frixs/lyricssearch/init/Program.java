@@ -17,14 +17,14 @@ import java.io.IOException;
  */
 public class Program extends Application {
 
-    private Stage                   primaryStage;
-    private Parent                  rootLayout;
     public static final String      APP_NAME        = "LyricsSearch";
     public static final String      VERSION         = "1.0.0";
     public static final String      VERSION_PREFIX  = "v";
     public static final int         MIN_HEIGHT      = 480;
     public static final int         MIN_WIDTH       = 640;
     public static final String      PATH_TO_SRC     = "/main/frixs/lyricssearch/";
+    private Stage                   primaryStage;
+    private Parent                  rootLayout;
 
     public static void main(String[] args) {
         launch(args);
@@ -79,7 +79,7 @@ public class Program extends Application {
      * Initializes data
      */
     public void initData() {
-        Data.generateLoremIpsumData();
+        Data.getInstance().generateLoremIpsumData();
     }
 
     /**

@@ -8,3 +8,7 @@
 .text-preview {
     -fx-background-color: #fff;
 }
+
+#searchFulltextCheckbox {
+    -fx-font-family: "Tahoma";
+}
