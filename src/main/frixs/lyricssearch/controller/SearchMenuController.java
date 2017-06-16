@@ -12,6 +12,8 @@ import main.frixs.lyricssearch.service.Data;
 import main.frixs.lyricssearch.service.Log;
 import main.frixs.lyricssearch.service.LogType;
 
+import java.util.Comparator;
+
 /**
  * @author Frixs
  */
@@ -71,6 +73,9 @@ public class SearchMenuController {
     public void initSearchBox() {
         searchBoxLV = new JFXListView<Song>();
 
+        // inject this controller reference to SearchListCell class
+        SearchListCell.injectSearchMenuController(this);
+
         // LV properties
         searchBoxLV.getStyleClass().add("searchBox");
         searchBoxLV.setEditable(false);
@@ -106,6 +111,16 @@ public class SearchMenuController {
 
         // Wrap the FilteredList in a SortedList.
         SortedList<Song> sortedData = new SortedList<>(filteredData);
+        sortedData.sort(new Comparator<Song>() {
+            @Override
+            public int compare(Song o1, Song o2) {
+                if(o1.getTitle() != null && o2.getTitle() != null) {
+                    return o1.getTitle().compareTo(o2.getTitle()); // TODO doesn't work sorting items
+                }
+
+                return 0;
+            }
+        });
 
         // Add sorted (and filtered) data to the search box.
         searchBoxLV.setItems(sortedData);

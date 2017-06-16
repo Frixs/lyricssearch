@@ -2,11 +2,11 @@ package main.frixs.lyricssearch.service;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListCell;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import main.frixs.lyricssearch.controller.SearchMenuController;
 import main.frixs.lyricssearch.model.Song;
 import org.controlsfx.glyphfont.Glyph;
 
@@ -14,6 +14,9 @@ import org.controlsfx.glyphfont.Glyph;
  * @author Frixs
  */
 public class SearchListCell extends JFXListCell<Song> {
+    /** reference to SearchMenu controller */
+    private static SearchMenuController searchMenuController;
+
     @Override
     public void updateItem(Song item, boolean empty) {
         super.updateItem(item, empty);
@@ -33,7 +36,9 @@ public class SearchListCell extends JFXListCell<Song> {
             btn.setPrefWidth(30);
             btn.setPrefHeight(30);
             // BTN event
-            btn.setOnAction(event -> System.out.println("clicked!"));
+            btn.setOnAction(event -> {
+                searchMenuController.getMainWindowController().getPreviewTabController().addToQueue(item);
+            });
 
             // put all together
             hbox.getChildren().addAll(label, pane, btn);
@@ -41,6 +46,18 @@ public class SearchListCell extends JFXListCell<Song> {
 
             // set
             setGraphic(hbox);
+        }
+    }
+
+    /**
+     * Inject parent - SearchMenuController reference to this controller
+     * @param searchMenuController     instance of the SearchMenu controller
+     */
+    public static void injectSearchMenuController(SearchMenuController searchMenuController) {
+        if(SearchListCell.searchMenuController == null) {
+            SearchListCell.searchMenuController = searchMenuController;
+        } else {
+            Log.getInstance().log(LogType.WARNING, SearchListCell.class.getName() +": You are trying to rewrite controller reference.");
         }
     }
 }

@@ -43,6 +43,7 @@ public class PreviewTabController {
     }
 
     public void addToQueue(Song song) {
+        System.out.println(song.getTitle());
         // TODO add to queue
     }
 
