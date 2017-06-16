@@ -40,7 +40,7 @@ public class Log {
 
         switch (type) {
             case CONFIG:
-                System.err.println("[CONFIG]: "+ text +"("+ dateFormat.format(date) +")");
+                System.out.println("[CONFIG]: "+ text +"("+ dateFormat.format(date) +")");
                 break;
             case INFO:
                 System.err.println("[INFO]: "+ text +"("+ dateFormat.format(date) +")");

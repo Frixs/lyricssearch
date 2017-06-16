@@ -12,3 +12,46 @@
 #searchFulltextCheckbox {
     -fx-font-family: "Tahoma";
 }
+
+.searchBox,
+.searchBox:focused {
+    -fx-font-family: "Tahoma";
+    -fx-background-color: transparent;
+}
+
+.searchBox .button {
+    -fx-text-fill: #000;
+    -fx-background-color: #ccc;
+    -fx-background-radius: 0;
+}
+
+.searchBox .list-cell {
+    -fx-cell-hover-color: #0d864c;
+    -fx-background-color: #f4f4f4;
+    -fx-padding: 10;
+    -fx-cursor: hand;
+}
+
+.searchBox .list-cell:focused,
+.searchBox .list-cell:selected {
+    -fx-cell-hover-color: #0d864c;
+    -fx-background-color: #ddd;
+}
+
+.searchBox .list-cell  > .hbox > .label {
+    -fx-padding: 8 0 0 0;
+}
+
+.searchBox .list-cell:selected .label {
+    -fx-text-fill: #000;
+}
+
+.searchBox .list-cell:selected .button,
+.searchBox .list-cell .button:hover {
+    -fx-background-color: #bbb;
+}
+
+.searchBox .list-cell:hover {
+    -fx-cell-hover-color: #0d864c;
+    -fx-text-fill: #000;
+}

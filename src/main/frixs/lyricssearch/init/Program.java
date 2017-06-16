@@ -90,7 +90,7 @@ public class Program extends Application {
      */
     @Override
     public void stop() {
-        System.err.println("Application is closing.");
+        Log.getInstance().log(LogType.CONFIG, "Application is closing.");
     }
 
     // Getters

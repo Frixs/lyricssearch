@@ -1,18 +1,13 @@
 package main.frixs.lyricssearch.controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXTextField;
-import javafx.beans.property.ReadOnlyObjectWrapper;
+import com.jfoenix.controls.*;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import main.frixs.lyricssearch.model.Song;
+import main.frixs.lyricssearch.service.SearchListCell;
 import main.frixs.lyricssearch.service.Data;
 import main.frixs.lyricssearch.service.Log;
 import main.frixs.lyricssearch.service.LogType;
@@ -24,7 +19,7 @@ public class SearchMenuController {
     /** reference to MainWindow controller */
     private MainWindowController    mainWindowController;
     /** search box */
-    private TableView<Song>         searchBoxTV;
+    private JFXListView<Song>       searchBoxLV;
 
     /** search wrapper border pane */
     @FXML private BorderPane        searchBP;
@@ -43,8 +38,16 @@ public class SearchMenuController {
         // create table view as search box
         initSearchBox();
 
+        // create wrapper for search box
+        AnchorPane anchorPane = new AnchorPane();
+        anchorPane.getStyleClass().add("menu-grandsub-light");
+        anchorPane.getChildren().add(searchBoxLV);
+        AnchorPane.setTopAnchor(searchBoxLV,    0D);
+        AnchorPane.setLeftAnchor(searchBoxLV,   0D);
+        AnchorPane.setRightAnchor(searchBoxLV,  0D);
+        AnchorPane.setBottomAnchor(searchBoxLV, 0D);
         // paste search box table to the search box wrapper
-        searchBP.setCenter(searchBoxTV);
+        searchBP.setCenter(anchorPane);
 
         // set search box functionality
         initSearch();
@@ -66,40 +69,12 @@ public class SearchMenuController {
      * Initializes search box table
      */
     public void initSearchBox() {
-        searchBoxTV = new TableView<Song>();
+        searchBoxLV = new JFXListView<Song>();
 
-        TableColumn<Song, String> titleCol      = new TableColumn<Song, String>("Title");
-        TableColumn<Song, Song> queueBTNCol 	= new TableColumn<Song, Song>("Add Queue");
-
-        // col properties
-        titleCol.setSortable(false);
-        titleCol.setEditable(false);
-        queueBTNCol.setSortable(false);
-        queueBTNCol.setEditable(false);
-
-        // col settings
-        titleCol.setCellValueFactory(new PropertyValueFactory<Song, String>("title"));
-        queueBTNCol.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-        queueBTNCol.setCellFactory(param -> new TableCell<Song, Song>() {
-            private final JFXButton btn = new JFXButton("Add to queue");
-
-            @Override
-            protected void updateItem(Song song, boolean empty) {
-                super.updateItem(song, empty);
-
-                if (song == null) {
-                    setGraphic(null);
-                    return;
-                }
-
-                // BTN event
-                setGraphic(btn);
-                btn.setOnAction(event -> mainWindowController.getPreviewTabController().addToQueue(song));
-            }
-        });
-
-        // get cols together
-        searchBoxTV.getColumns().addAll(titleCol, queueBTNCol);
+        // LV properties
+        searchBoxLV.getStyleClass().add("searchBox");
+        searchBoxLV.setEditable(false);
+        searchBoxLV.setCellFactory(param -> new SearchListCell());
 
         Log.getInstance().log(LogType.CONFIG, getClass().getName() +": SearchBox view created!");
     }
@@ -133,7 +108,7 @@ public class SearchMenuController {
         SortedList<Song> sortedData = new SortedList<>(filteredData);
 
         // Add sorted (and filtered) data to the search box.
-        searchBoxTV.setItems(sortedData);
+        searchBoxLV.setItems(sortedData);
 
         Log.getInstance().log(LogType.CONFIG, getClass().getName() +": searchBox completely initialized!");
     }
