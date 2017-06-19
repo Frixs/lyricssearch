@@ -4,6 +4,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.frixs.lyricssearch.model.Song;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 /**
  * @author Frixs
  */
@@ -49,6 +54,8 @@ public class Data {
         list.add(new Song("ROCK", "Nulla est. Ut tempus purus at lorem. Nunc tincidunt ante vitae massa. Maecenas sollicitudin."));
         list.add(new Song("Locker dock", "Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla est. Ut tempus purus at lorem. Nunc."));
 
+        this.sort();
+
         Log.getInstance().log(LogType.CONFIG, getClass().getName() +": Data (LoremIpsum) successfully loaded!");
     }
 
@@ -59,6 +66,18 @@ public class Data {
         // TODO add song - file (xml) structure
 
         Log.getInstance().log(LogType.CONFIG, getClass().getName() +": Data successfully loaded!");
+    }
+
+    /**
+     *  Sort this.list alphabetically
+     */
+    private void sort() {
+        Collections.sort(this.list, new Comparator<Song>() {
+            @Override
+            public int compare(Song o1, Song o2) {
+                return o1.getTitle().toLowerCase().compareTo(o2.getTitle().toLowerCase());
+            }
+        });
     }
 
     // Getters

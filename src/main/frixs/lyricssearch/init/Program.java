@@ -36,11 +36,11 @@ public class Program extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle(APP_NAME + " " + VERSION_PREFIX + VERSION);
 
-        // load root layout
-        initRootLayout();
-
         // load init data
         initData();
+
+        // load root layout
+        initRootLayout();
     }
 
     /**

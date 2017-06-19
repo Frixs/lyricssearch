@@ -1,6 +1,7 @@
 package main.frixs.lyricssearch.controller;
 
 import com.jfoenix.controls.*;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
@@ -11,8 +12,6 @@ import main.frixs.lyricssearch.service.SearchListCell;
 import main.frixs.lyricssearch.service.Data;
 import main.frixs.lyricssearch.service.Log;
 import main.frixs.lyricssearch.service.LogType;
-
-import java.util.Comparator;
 
 /**
  * @author Frixs
@@ -88,7 +87,8 @@ public class SearchMenuController {
      * Initializes search functionality
      */
     private void initSearch() {
-        FilteredList<Song> filteredData = new FilteredList<>(Data.getInstance().getList(), p -> true);
+        ObservableList<Song> observableData = Data.getInstance().getList();
+        FilteredList<Song> filteredData     = new FilteredList<>(observableData, p -> true);
 
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(song -> {
@@ -111,16 +111,6 @@ public class SearchMenuController {
 
         // Wrap the FilteredList in a SortedList.
         SortedList<Song> sortedData = new SortedList<>(filteredData);
-        sortedData.sort(new Comparator<Song>() {
-            @Override
-            public int compare(Song o1, Song o2) {
-                if(o1.getTitle() != null && o2.getTitle() != null) {
-                    return o1.getTitle().compareTo(o2.getTitle()); // TODO doesn't work sorting items
-                }
-
-                return 0;
-            }
-        });
 
         // Add sorted (and filtered) data to the search box.
         searchBoxLV.setItems(sortedData);
