@@ -41,7 +41,7 @@
                            <children>
                               <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <JFXButton focusTraversable="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="23.0" styleClass="btn-norm-light" text="ADD TO QUEUE">
+                                    <JFXButton focusTraversable="false" maxHeight="-Infinity" minHeight="-Infinity" onAction="#onActionAddToQueueBTN" prefHeight="23.0" styleClass="btn-norm-light" text="ADD TO QUEUE">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor></JFXButton>

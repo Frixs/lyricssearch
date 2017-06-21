@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import main.frixs.lyricssearch.model.Song;
+import main.frixs.lyricssearch.service.Data;
 import main.frixs.lyricssearch.service.Log;
 import main.frixs.lyricssearch.service.LogType;
 
@@ -42,9 +43,12 @@ public class PreviewTabController {
         }
     }
 
+    /**
+     * Add Song to the queue
+     * @param song      Song instance
+     */
     public void addToQueue(Song song) {
-        System.out.println(song.getTitle());
-        // TODO add to queue
+        Data.getInstance().getQueue().add(song);
     }
 
     // Events
@@ -57,6 +61,20 @@ public class PreviewTabController {
             queuePane.setVisible(true);
             queuePane.setPrefWidth(queuePaneWidth);
         }
+    }
+
+    @FXML
+    void onActionAddToQueueBTN(ActionEvent event) {
+        this.getMainWindowController()
+                .getSearchMenuController()
+                .getSearchBoxLV()   // TODO doesn't work - NullPointerException
+                .getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+            System.out.println("ListView Selection Changed!");
+        });
+
+        //this.addToQueue(Song song);
     }
 
     // Getters

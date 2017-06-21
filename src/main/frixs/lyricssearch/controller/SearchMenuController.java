@@ -70,7 +70,7 @@ public class SearchMenuController {
      * Initializes search box table
      */
     public void initSearchBox() {
-        searchBoxLV = new JFXListView<Song>();
+        searchBoxLV = new JFXListView<>();
 
         // inject this controller reference to SearchListCell class
         SearchListCell.injectSearchMenuController(this);
@@ -121,6 +121,10 @@ public class SearchMenuController {
     // Getters
     public JFXButton getSearchMenuCloseBTN() {
         return searchMenuCloseBTN;
+    }
+
+    public JFXListView<Song> getSearchBoxLV() {
+        return searchBoxLV;
     }
 
     public MainWindowController getMainWindowController() {
