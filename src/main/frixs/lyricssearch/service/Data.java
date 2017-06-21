@@ -2,6 +2,7 @@ package main.frixs.lyricssearch.service;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import main.frixs.lyricssearch.model.Queue;
 import main.frixs.lyricssearch.model.Song;
 
 import java.util.ArrayList;
@@ -16,7 +17,9 @@ public class Data {
     /** singleton reference */
     private static Data instance = null;
     /** list of all songs */
-    private ObservableList<Song> list = FXCollections.observableArrayList();
+    private ObservableList<Song> list   = FXCollections.observableArrayList();
+    /** queue of the songs */
+    private Queue<Song> queue           = new Queue<>();
 
     /**
      * No-parameter constructor
@@ -83,5 +86,9 @@ public class Data {
     // Getters
     public ObservableList<Song> getList() {
         return list;
+    }
+
+    public Queue<Song> getQueue() {
+        return queue;
     }
 }

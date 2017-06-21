@@ -5,9 +5,9 @@ import main.frixs.lyricssearch.service.LogType;
 
 /**
  * @author Frixs
- * Implemented linked list
+ * Implemented as linked list
  */
-public class Queue {
+public class Queue<T> {
     /** first element of the list */
     private Node first;
     /** last elemnt of the list */
@@ -24,25 +24,27 @@ public class Queue {
 
     /**
      * Add new item to the list
-     * @param song  added item
+     * @param item  added item
      */
-    public void add(Song song) {
-        Node node = new Node(song);
-        if (size == 0) {
+    public void add(T item) {
+        Node node = new Node(item);
+        if (this.isEmpty()) {
             this.first  = node;
             this.last   = node;
         } else {
             this.last.next = node;
             this.last      = node;
         }
+
+        this.size++;
     }
 
     /**
      * Get item on the current index
      * @param index     index of the list
-     * @return          Song instance
+     * @return          item instance
      */
-    public Song get(int index) {
+    public T get(int index) {
         if (index >= this.getSize()) {
             Log.getInstance().log(LogType.WARNING, getClass().getName() +": Index is out of bounds!");
             throw new IndexOutOfBoundsException("Index is "+ index +" out of bounds! Size: "+ getSize());
@@ -56,7 +58,7 @@ public class Queue {
             currentNode = currentNode.next;
         }
 
-        return currentNode.value;
+        return (T) currentNode.value;
     }
 
     /**
@@ -128,11 +130,11 @@ public class Queue {
     /**
      * Inner class representing 1 node of linked list
      */
-    private class Node {
-        private Song value;
+    private class Node<T> {
+        private T value;
         private Node next;
 
-        private Node(Song value) {
+        private Node(T value) {
             this.value = value;
         }
     }
