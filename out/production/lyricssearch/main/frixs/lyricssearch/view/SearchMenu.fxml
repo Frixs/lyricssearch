@@ -36,7 +36,7 @@
                         <Insets right="10.0" top="10.0" />
                      </StackPane.margin>
                      <graphic>
-                        <Glyph alignment="CENTER" contentDisplay="CENTER" fontFamily="FontAwesome" graphicTextGap="0.0" icon="CLOSE" styleClass="glyph" translateX="1.0" translateY="1.0" />
+                        <Glyph alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" fontFamily="FontAwesome" graphicTextGap="0.0" icon="CLOSE" styleClass="glyph" translateX="1.0" translateY="1.0" />
                      </graphic>
                      <cursor>
                         <Cursor fx:constant="HAND" />

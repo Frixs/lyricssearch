@@ -78,7 +78,7 @@ public class PreviewTabController {
         Text text = new Text(this.currentSong.getText());
         text.getStyleClass().add("text-box");
         // add text wrapper to TF
-        //this.textTF.getChildren().clear();
+        this.textTF.getChildren().clear();
         this.textTF.getChildren().add(text);
     }
 

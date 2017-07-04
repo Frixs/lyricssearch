@@ -1,5 +1,6 @@
 package main.frixs.lyricssearch.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,15 +19,23 @@ import java.io.IOException;
 public class MainWindowController {
     /** search side menu width in pixels */
     private int searchSideMenuWidth = 260;
+    /** setting side menu width in pixels */
+    private int settingSideMenuWidth = 350;
     /** reference to Program controller */
     private ProgramController programController;
     /** reference to SearchMenu controller */
     @FXML private SearchMenuController searchMenuController;
     /** reference to PreviewTab controller */
     @FXML private PreviewTabController previewTabController;
+    /** reference to SettingMenu controller */
+    @FXML private SettingMenuController settingMenuController;
 
     /** searchMenu drawer */
     @FXML private JFXDrawer searchMenuDrawer;
+    /** settingMenu drawer */
+    @FXML private JFXDrawer settingMenuDrawer;
+    /** settingMenu open BTN */
+    @FXML private JFXButton settingMenuOpenBTN;
 
     /**
      * default initialize
@@ -34,6 +43,7 @@ public class MainWindowController {
     @FXML
     private void initialize() {
         previewTabController.injectMainWindowController(this);
+        includeSettingMenu();
         includeSearchMenu();
     }
 
@@ -89,6 +99,50 @@ public class MainWindowController {
 
         } catch (IOException e) {
             Log.getInstance().log(LogType.SEVERE, getClass().getName() +": SearchMenu cannot be loaded!");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Method to append side setting menu to the program
+     */
+    private void includeSettingMenu() {
+        try {
+            // load FXML file
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(Program.PATH_TO_SRC +"view/SettingMenu.fxml"));
+            Parent settingMenuWrapper = loader.load();
+
+            // inject this controller to settingMenu controller as a parent controller
+            SettingMenuController settingMenuController = loader.getController();
+            settingMenuController.injectMainWindowController(this);
+
+            // set drawer side pane
+            settingMenuDrawer.setSidePane(settingMenuWrapper);
+
+            // set menu width
+            settingMenuDrawer.setTranslateX(settingSideMenuWidth);
+            settingMenuDrawer.setDefaultDrawerSize(settingSideMenuWidth);
+            settingMenuDrawer.setPrefWidth(settingSideMenuWidth);
+
+            // add event handler to open BTN
+            this.settingMenuOpenBTN.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+                settingMenuDrawer.open();
+                settingMenuDrawer.setTranslateX(0);
+            });
+
+            // add event handler to close BTN
+            settingMenuController.getSettingMenuCloseBTN().addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+                settingMenuDrawer.close();
+                settingMenuDrawer.setOnDrawerClosed(event -> {
+                    settingMenuDrawer.setTranslateX(settingSideMenuWidth);
+                });
+            });
+
+            Log.getInstance().log(LogType.CONFIG, getClass().getName() +": SettingMenu successfully included to layout!");
+
+        } catch (IOException e) {
+            Log.getInstance().log(LogType.SEVERE, getClass().getName() +": SettingMenu cannot be loaded!");
             e.printStackTrace();
         }
     }

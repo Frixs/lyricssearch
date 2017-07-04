@@ -12,7 +12,7 @@
 }
 
 #textSP .text-preview {
-    -fx-text-alignment: left;
+    -fx-text-alignment: center;
 }
 
 #textSP .text-preview .text-box {
@@ -67,4 +67,18 @@
 .searchBox .list-cell:hover {
     -fx-cell-hover-color: #0d864c;
     -fx-text-fill: #000;
+}
+
+#settingMenu {
+    -fx-font-family: "Tahoma";
+    -fx-background-color: #164D32;
+}
+
+#settingMenu .header {
+    -fx-background-color: #024223;
+}
+
+#settingMenu .header .title {
+    -fx-text-fill: #fff;
+    -fx-font-size: 16;
 }

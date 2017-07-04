@@ -112,6 +112,42 @@
 
 
 
+.btn-norm-color-dark {
+    -fx-font-family: "Tahoma";
+    -fx-text-fill: #fff;
+    -fx-background-color: #033E22;
+    -fx-background-radius: 0;
+}
+
+.btn-norm-color-dark .glyph {
+    -fx-text-fill: #fff;
+}
+
+.btn-norm-color-dark:hover {
+    -fx-text-fill: #fff;
+    -fx-background-color: #0E3220;
+}
+
+
+
+.btn-norm-color-dark-light {
+    -fx-font-family: "Tahoma";
+    -fx-text-fill: #fff;
+    -fx-background-color: #085731;
+    -fx-background-radius: 0;
+}
+
+.btn-norm-color-dark-light .glyph {
+    -fx-text-fill: #fff;
+}
+
+.btn-norm-color-dark-light:hover {
+    -fx-text-fill: #fff;
+    -fx-background-color: #03361D;
+}
+
+
+
 .btn-norm-dark {
     -fx-font-family: "Tahoma";
     -fx-text-fill: #fff;
