@@ -58,9 +58,6 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <center>
-                        <TextFlow prefHeight="200.0" prefWidth="200.0" styleClass="text-preview" BorderPane.alignment="CENTER" />
-                     </center>
                      <right>
                         <ScrollPane fx:id="queuePane" hbarPolicy="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="250.0" styleClass="scrollpane-light" BorderPane.alignment="CENTER">
                            <content>
@@ -68,6 +65,13 @@
                            </content>
                         </ScrollPane>
                      </right>
+                     <center>
+                        <AnchorPane fx:id="textAP" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TextFlow fx:id="textTF" styleClass="text-preview" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </center>
                   </BorderPane>
                </children>
             </AnchorPane>

@@ -5,8 +5,18 @@
     -fx-font-weight: bold;
 }
 
-.text-preview {
+#textAP,
+#textAP > .text-preview {
     -fx-background-color: #fff;
+}
+
+#textAP > .text-preview {
+    -fx-text-alignment: left;
+}
+
+#textAP > .text-preview .text-box {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14;
 }
 
 #searchFulltextCheckbox {

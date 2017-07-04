@@ -5,6 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import main.frixs.lyricssearch.model.Song;
 import main.frixs.lyricssearch.service.Data;
 import main.frixs.lyricssearch.service.Log;
@@ -18,12 +21,18 @@ public class PreviewTabController {
     private int queuePaneWidth = 250;
     /** reference to MainWindow controller */
     private MainWindowController mainWindowController;
+    /** current displayed song */
+    private Song currentSong = null;
     /** searchMenu open BTN */
     @FXML private JFXButton searchMenuOpenBTN;
     /** queue scroll pane */
     @FXML private ScrollPane queuePane;
     /** Title label */
     @FXML private Label titleLabel;
+    /** @textTF 's Anchor Pane which can define width of the lyrics */
+    @FXML private AnchorPane textAP;
+    /** Text Flow for lyrics */
+    @FXML private TextFlow textTF;
 
     /**
      * default initialize
@@ -59,11 +68,18 @@ public class PreviewTabController {
      * @param song      instance of the song
      */
     public void loadSong(Song song) {
-        // set title label
-        titleLabel.setText("\u266B "+ song.getTitle() +" \u266B");
+        // set current displayed song
+        this.currentSong = song;
 
-        // set text flow
-        // TODO text flow
+        // set title label
+        titleLabel.setText("\u266B "+ this.currentSong.getTitle() +" \u266B");
+
+        // create Text wrapper/box for lyrics
+        Text text = new Text(this.currentSong.getText());
+        text.getStyleClass().add("text-box");
+        // add text wrapper to TF
+        this.textTF.getChildren().clear();
+        this.textTF.getChildren().add(text);
     }
 
     // Events
@@ -80,16 +96,10 @@ public class PreviewTabController {
 
     @FXML
     void onActionAddToQueueBTN(ActionEvent event) {
-        this.getMainWindowController()
-                .getSearchMenuController()
-                .getSearchBoxLV()   // TODO doesn't work - NullPointerException
-                .getSelectionModel()
-                .selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> {
-            System.out.println("ListView Selection Changed!");
-        });
-
-        //this.addToQueue(Song song);
+        if(currentSong != null) {
+            this.addToQueue(currentSong);
+            Log.getInstance().log(LogType.INFO, getClass().getName() +": Current song ("+ currentSong.getTitle() +") added to queue.");
+        }
     }
 
     // Getters

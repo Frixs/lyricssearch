@@ -87,6 +87,7 @@ public class SearchMenuController {
             @Override
             public void changed(ObservableValue<? extends Song> observable, Song oldValue, Song newValue) {
                 getMainWindowController().getPreviewTabController().loadSong(newValue);
+                Log.getInstance().log(LogType.INFO, getClass().getName() +": Current song changed to "+ newValue.getTitle() +".");
             }
         });
 
