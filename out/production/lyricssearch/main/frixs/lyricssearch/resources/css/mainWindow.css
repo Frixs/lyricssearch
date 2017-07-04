@@ -5,16 +5,17 @@
     -fx-font-weight: bold;
 }
 
-#textAP,
-#textAP > .text-preview {
+.preview-tab-content-bp,
+#textSP,
+#textSP .text-preview {
     -fx-background-color: #fff;
 }
 
-#textAP > .text-preview {
+#textSP .text-preview {
     -fx-text-alignment: left;
 }
 
-#textAP > .text-preview .text-box {
+#textSP .text-preview .text-box {
     -fx-font-family: "Tahoma";
     -fx-font-size: 14;
 }

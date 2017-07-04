@@ -29,8 +29,8 @@ public class PreviewTabController {
     @FXML private ScrollPane queuePane;
     /** Title label */
     @FXML private Label titleLabel;
-    /** @textTF 's Anchor Pane which can define width of the lyrics */
-    @FXML private AnchorPane textAP;
+    /** @textTF 's Scroll Pane which can define width of the lyrics */
+    @FXML private ScrollPane textSP;
     /** Text Flow for lyrics */
     @FXML private TextFlow textTF;
 
@@ -64,7 +64,7 @@ public class PreviewTabController {
     }
 
     /**
-     * Load to as current one.
+     * Load song as current one.
      * @param song      instance of the song
      */
     public void loadSong(Song song) {
@@ -78,7 +78,7 @@ public class PreviewTabController {
         Text text = new Text(this.currentSong.getText());
         text.getStyleClass().add("text-box");
         // add text wrapper to TF
-        this.textTF.getChildren().clear();
+        //this.textTF.getChildren().clear();
         this.textTF.getChildren().add(text);
     }
 
