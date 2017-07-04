@@ -3,6 +3,7 @@ package main.frixs.lyricssearch.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import main.frixs.lyricssearch.model.Song;
 import main.frixs.lyricssearch.service.Data;
@@ -21,6 +22,8 @@ public class PreviewTabController {
     @FXML private JFXButton searchMenuOpenBTN;
     /** queue scroll pane */
     @FXML private ScrollPane queuePane;
+    /** Title label */
+    @FXML private Label titleLabel;
 
     /**
      * default initialize
@@ -49,6 +52,18 @@ public class PreviewTabController {
      */
     public void addToQueue(Song song) {
         Data.getInstance().getQueue().add(song);
+    }
+
+    /**
+     * Load to as current one.
+     * @param song      instance of the song
+     */
+    public void loadSong(Song song) {
+        // set title label
+        titleLabel.setText("\u266B "+ song.getTitle() +" \u266B");
+
+        // set text flow
+        // TODO text flow
     }
 
     // Events

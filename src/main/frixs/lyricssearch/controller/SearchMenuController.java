@@ -1,6 +1,8 @@
 package main.frixs.lyricssearch.controller;
 
 import com.jfoenix.controls.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -67,7 +69,7 @@ public class SearchMenuController {
     }
 
     /**
-     * Initializes search box table
+     * Initializes search box table with its parameters and event listeners
      */
     public void initSearchBox() {
         searchBoxLV = new JFXListView<>();
@@ -79,6 +81,14 @@ public class SearchMenuController {
         searchBoxLV.getStyleClass().add("searchBox");
         searchBoxLV.setEditable(false);
         searchBoxLV.setCellFactory(param -> new SearchListCell());
+
+        // add event listener ON SELECT item
+        searchBoxLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Song>() {
+            @Override
+            public void changed(ObservableValue<? extends Song> observable, Song oldValue, Song newValue) {
+                getMainWindowController().getPreviewTabController().loadSong(newValue);
+            }
+        });
 
         Log.getInstance().log(LogType.CONFIG, getClass().getName() +": SearchBox view created!");
     }
