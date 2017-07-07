@@ -104,10 +104,14 @@ public class PreviewTabController {
 
     // Getters
     public JFXButton getSearchMenuOpenBTN() {
-        return searchMenuOpenBTN;
+        return this.searchMenuOpenBTN;
     }
 
-    public MainWindowController getMainWindowController() {
-        return mainWindowController;
+    public TextFlow getLyricsTextTF() {
+        return this.textTF;
+    }
+
+    public ScrollPane getLyricsTextSP() {
+        return this.textSP;
     }
 }

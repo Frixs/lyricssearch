@@ -5,19 +5,28 @@
     -fx-font-weight: bold;
 }
 
-.preview-tab-content-bp,
-#textSP,
+.preview-tab-content-bp {
+    -fx-background-color: #fff;
+}
+
+#textSP {
+    -fx-background-color: transparent;
+}
+
 #textSP .text-preview {
     -fx-background-color: #fff;
+    -fx-border-width: 0 1 0 1;
+    -fx-border-color: transparent #eee transparent #eee;
 }
 
 #textSP .text-preview {
     -fx-text-alignment: center;
+    -fx-font-size: 14;
 }
 
 #textSP .text-preview .text-box {
     -fx-font-family: "Tahoma";
-    -fx-font-size: 14;
+
 }
 
 #searchFulltextCheckbox {
@@ -81,4 +90,9 @@
 #settingMenu .header .title {
     -fx-text-fill: #fff;
     -fx-font-size: 16;
+}
+
+#settingMenu .label {
+    -fx-text-fill: #fff;
+    -fx-font-family: "Tahoma";
 }

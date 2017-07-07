@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -19,7 +21,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <graphic>
-                         <Glyph alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" fontFamily="FontAwesome" graphicTextGap="0.0" icon="CLOSE" styleClass="glyph" translateY="-1.0" />
+                        <Glyph alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" fontFamily="FontAwesome" graphicTextGap="0.0" icon="CLOSE" styleClass="glyph" translateX="0.0" translateY="-1.0" />
                      </graphic>
                   </JFXButton>
                   <Label styleClass="title" text="SETTINGS" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="12.0" />
@@ -29,6 +31,17 @@
                </BorderPane.margin>
             </AnchorPane>
          </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="TEXT WIDTH" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <JFXSlider fx:id="textWidthSLIDER" focusTraversable="false" value="100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0" />
+                  <Label text="TEXT SIZE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" />
+                  <JFXSlider fx:id="textSizeSLIDER" focusTraversable="false" max="72.0" min="8.0" value="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0" />
+                  <JFXToggleButton fx:id="darkThemeBTN" focusTraversable="false" onAction="#onActionDarkThemeBTN" styleClass="btn-norm-color" text="DARK THEME" toggleColor="#49da5f" toggleLineColor="#164d32" unToggleLineColor="#164d32" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="110.0" />
+               </children>
+            </AnchorPane>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>
