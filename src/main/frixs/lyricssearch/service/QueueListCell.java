@@ -6,16 +6,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import main.frixs.lyricssearch.controller.SearchMenuController;
+import main.frixs.lyricssearch.controller.PreviewTabController;
 import main.frixs.lyricssearch.model.Song;
 import org.controlsfx.glyphfont.Glyph;
 
 /**
  * @author Frixs
  */
-public class SearchListCell extends JFXListCell<Song> {
+public class QueueListCell extends JFXListCell<Song> {
     /** reference to SearchMenu controller */
-    private static SearchMenuController searchMenuController;
+    private static PreviewTabController previewTabController;
 
     @Override
     public void updateItem(Song item, boolean empty) {
@@ -32,13 +32,13 @@ public class SearchListCell extends JFXListCell<Song> {
 
             hbox.getStyleClass().add("hbox");
             // BTN styles
-            btn.setGraphic(Glyph.create("FontAwesome|KEY"));
+            btn.setGraphic(Glyph.create("FontAwesome|CLOSE"));
             btn.setPrefWidth(30);
             btn.setPrefHeight(30);
             // BTN event
             btn.setOnAction(event -> {
-                Data.getInstance().addSongToQueue(item);
-                Log.getInstance().log(LogType.INFO, getClass().getName() +": Song - "+ item.getTitle() +" - added to queue.");
+                Data.getInstance().removeSongFromQueue(item);
+                Log.getInstance().log(LogType.INFO, getClass().getName() +": Song - "+ item.getTitle() +" - removed from queue.");
             });
 
             // put all together
@@ -51,14 +51,14 @@ public class SearchListCell extends JFXListCell<Song> {
     }
 
     /**
-     * Inject parent - SearchMenuController reference to this controller
-     * @param searchMenuController     instance of the SearchMenu controller
+     * Inject parent - PreviewTabController reference to this controller
+     * @param previewTabController     instance of the previewTab controller
      */
-    public static void injectSearchMenuController(SearchMenuController searchMenuController) {
-        if(SearchListCell.searchMenuController == null) {
-            SearchListCell.searchMenuController = searchMenuController;
+    public static void injectPreviewTabController(PreviewTabController previewTabController) {
+        if(QueueListCell.previewTabController == null) {
+            QueueListCell.previewTabController = previewTabController;
         } else {
-            Log.getInstance().log(LogType.WARNING, SearchListCell.class.getName() +": You are trying to rewrite controller reference.");
+            Log.getInstance().log(LogType.WARNING, QueueListCell.class.getName() +": You are trying to rewrite controller reference.");
         }
     }
 }

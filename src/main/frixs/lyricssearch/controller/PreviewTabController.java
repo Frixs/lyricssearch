@@ -1,6 +1,9 @@
 package main.frixs.lyricssearch.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,6 +15,7 @@ import main.frixs.lyricssearch.model.Song;
 import main.frixs.lyricssearch.service.Data;
 import main.frixs.lyricssearch.service.Log;
 import main.frixs.lyricssearch.service.LogType;
+import main.frixs.lyricssearch.service.QueueListCell;
 
 /**
  * @author Frixs
@@ -23,16 +27,21 @@ public class PreviewTabController {
     private MainWindowController mainWindowController;
     /** current displayed song */
     private Song currentSong = null;
+    /** queue box */
+    private JFXListView<Song> queueBoxLV;
+
     /** searchMenu open BTN */
     @FXML private JFXButton searchMenuOpenBTN;
-    /** queue scroll pane */
-    @FXML private ScrollPane queuePane;
     /** Title label */
     @FXML private Label titleLabel;
     /** @textTF 's Scroll Pane which can define width of the lyrics */
     @FXML private ScrollPane textSP;
     /** Text Flow for lyrics */
     @FXML private TextFlow textTF;
+    /** queue wrapper */
+    @FXML private AnchorPane queuePane;
+    /** queue scroll pane */
+    @FXML private ScrollPane queueSP;
 
     /**
      * default initialize
@@ -41,6 +50,10 @@ public class PreviewTabController {
     private void initialize() {
         queuePane.setVisible(false);
         queuePane.setPrefWidth(0);
+
+        initQueueBox();
+        this.queueSP.setContent(this.queueBoxLV);
+        initQueue();
     }
 
     /**
@@ -56,11 +69,38 @@ public class PreviewTabController {
     }
 
     /**
-     * Add Song to the queue
-     * @param song      Song instance
+     * Initializes queue box table with its parameters and event listeners
      */
-    public void addToQueue(Song song) {
-        Data.getInstance().getQueue().add(song);
+    private void initQueueBox() {
+        queueBoxLV = new JFXListView<>();
+
+        // inject this controller reference to QueueListCell class
+        QueueListCell.injectPreviewTabController(this);
+
+        // LV properties
+        queueBoxLV.getStyleClass().add("searchBox");
+        queueBoxLV.setEditable(false);
+        queueBoxLV.setCellFactory(param -> new QueueListCell());
+
+        // add event listener ON SELECT item
+        queueBoxLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Song>() {
+            @Override
+            public void changed(ObservableValue<? extends Song> observable, Song oldValue, Song newValue) {
+                loadSong(newValue);
+                Log.getInstance().log(LogType.INFO, getClass().getName() +": Current song changed to "+ newValue.getTitle() +".");
+            }
+        });
+
+        Log.getInstance().log(LogType.CONFIG, getClass().getName() +": QueueBox view created!");
+    }
+
+    /**
+     * Initializes queue data
+     */
+    private void initQueue() {
+        queueBoxLV.setItems(Data.getInstance().getQueueList());
+
+        Log.getInstance().log(LogType.CONFIG, getClass().getName() +": QueueBox completely initialized!");
     }
 
     /**
@@ -97,7 +137,7 @@ public class PreviewTabController {
     @FXML
     void onActionAddToQueueBTN(ActionEvent event) {
         if(currentSong != null) {
-            this.addToQueue(currentSong);
+            Data.getInstance().addSongToQueue(currentSong);
             Log.getInstance().log(LogType.INFO, getClass().getName() +": Current song ("+ currentSong.getTitle() +") added to queue.");
         }
     }

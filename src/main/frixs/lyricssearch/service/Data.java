@@ -5,10 +5,8 @@ import javafx.collections.ObservableList;
 import main.frixs.lyricssearch.model.Queue;
 import main.frixs.lyricssearch.model.Song;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
 /**
  * @author Frixs
@@ -16,10 +14,12 @@ import java.util.List;
 public class Data {
     /** singleton reference */
     private static Data instance = null;
-    /** list of all songs */
-    private ObservableList<Song> list   = FXCollections.observableArrayList();
+    /** songList of all songs */
+    private ObservableList<Song> songList   = FXCollections.observableArrayList();
+    /** observable queue */
+    private ObservableList<Song> queueList  = FXCollections.observableArrayList();
     /** queue of the songs */
-    private Queue<Song> queue           = new Queue<>();
+    private Queue<Song> queue               = new Queue<>();
 
     /**
      * No-parameter constructor
@@ -42,22 +42,22 @@ public class Data {
     /**
      * Generate data to debug
      */
-    public void generateLoremIpsumData() {
-        list.add(new Song("Zajímavý song", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras pede libero,\ndapibus nec, pretium sit amet, tempor quis. Integer imperdiet lectus quis justo. Nulla est."));
-        list.add(new Song("Bezvýznamný", "Donec ipsum massa, ullamcorper in, auctor et,\n\nscelerisque sed, est. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Etiam neque. Nullam rhoncus aliquam metus. Praesent vitae arcu tempor neque lacinia pretium. Suspendisse nisl.\n\nInteger vulputate sem a nibh rutrum consequat. Quisque porta."));
-        list.add(new Song("White Habbit", "Cum sociis\nnatoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla est. Ut tempus purus at lorem. Nunc tincidunt ante vitae massa. Maecenas sollicitudin."));
-        list.add(new Song("ROCK", "Xum sociis natoque penatibus et magnis nas sollicitudin."));
-        list.add(new Song("LDOCK", "Konec ipsum massa, ullamcorper in, auctor et,\nscelerisque sed."));
-        list.add(new Song("No title selexc", "Rumsociis\nnatoque penatibus et magnis nas sollicitudin."));
-        list.add(new Song("Impossible", "XXpede libero, dapibus nec, pretium sit\n\namet, tempor quis. Integer imperdiet lec."));
-        list.add(new Song("Battle Fury", "Cras pede libero, dapibus nec, pretium\n\nsit amet."));
-        list.add(new Song("Jelino", "In, auctor et, scelerisque sed, est. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Etiam neque. Nullam rhoncus aliquam metus. Praesent vitae arcu tempor neque lacinia pretium. Suspendisse nisl.\n\nInteger vulputate sem a nibh rutrum consequat. Quisque porta."));
-        list.add(new Song("Veni, Vidi, Vici", "Nascetur ridiculus mus. Nulla est. Ut tempus purus at lorem. Nunc tincidunt ante vitae massa. Maecenas sollicitudin."));
-        list.add(new Song("Inhabbitans", "Ipsum massa,\n\nullamcorper in, auctor et, scelerisque sed, est. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Class apten."));
-        list.add(new Song("ROCK", "Nulla est. Ut tempus purus at lorem.\n\nNunc tincidunt ante vitae massa. Maecenas sollicitudin."));
-        list.add(new Song("Locker dock", "Sociis natoque penatibus et magnis dis parturient montes,\nnascetur ridiculus mus.\nNulla est. Ut tempus purus at lorem. Nunc."));
+    public void generateLoremIpsumSongs() {
+        songList.add(new Song("Zajímavý song", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cras pede libero,\ndapibus nec, pretium sit amet, tempor quis. Integer imperdiet lectus quis justo. Nulla est."));
+        songList.add(new Song("Bezvýznamný", "Donec ipsum massa, ullamcorper in, auctor et,\n\nscelerisque sed, est. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Etiam neque. Nullam rhoncus aliquam metus. Praesent vitae arcu tempor neque lacinia pretium. Suspendisse nisl.\n\nInteger vulputate sem a nibh rutrum consequat. Quisque porta."));
+        songList.add(new Song("White Habbit", "Cum sociis\nnatoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla est. Ut tempus purus at lorem. Nunc tincidunt ante vitae massa. Maecenas sollicitudin."));
+        songList.add(new Song("ROCK", "Xum sociis natoque penatibus et magnis nas sollicitudin."));
+        songList.add(new Song("LDOCK", "Konec ipsum massa, ullamcorper in, auctor et,\nscelerisque sed."));
+        songList.add(new Song("No title selexc", "Rumsociis\nnatoque penatibus et magnis nas sollicitudin."));
+        songList.add(new Song("Impossible", "XXpede libero, dapibus nec, pretium sit\n\namet, tempor quis. Integer imperdiet lec."));
+        songList.add(new Song("Battle Fury", "Cras pede libero, dapibus nec, pretium\n\nsit amet."));
+        songList.add(new Song("Jelino", "In, auctor et, scelerisque sed, est. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Etiam neque. Nullam rhoncus aliquam metus. Praesent vitae arcu tempor neque lacinia pretium. Suspendisse nisl.\n\nInteger vulputate sem a nibh rutrum consequat. Quisque porta."));
+        songList.add(new Song("Veni, Vidi, Vici", "Nascetur ridiculus mus. Nulla est. Ut tempus purus at lorem. Nunc tincidunt ante vitae massa. Maecenas sollicitudin."));
+        songList.add(new Song("Inhabbitans", "Ipsum massa,\n\nullamcorper in, auctor et, scelerisque sed, est. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Class apten."));
+        songList.add(new Song("ROCK", "Nulla est. Ut tempus purus at lorem.\n\nNunc tincidunt ante vitae massa. Maecenas sollicitudin."));
+        songList.add(new Song("Locker dock", "Sociis natoque penatibus et magnis dis parturient montes,\nnascetur ridiculus mus.\nNulla est. Ut tempus purus at lorem. Nunc."));
 
-        this.sort();
+        this.sortSongs();
 
         Log.getInstance().log(LogType.CONFIG, getClass().getName() +": Data (LoremIpsum) successfully loaded!");
     }
@@ -72,10 +72,10 @@ public class Data {
     }
 
     /**
-     *  Sort this.list alphabetically
+     *  Sort this.songList alphabetically
      */
-    private void sort() {
-        Collections.sort(this.list, new Comparator<Song>() {
+    private void sortSongs() {
+        Collections.sort(this.songList, new Comparator<Song>() {
             @Override
             public int compare(Song o1, Song o2) {
                 return o1.getTitle().toLowerCase().compareTo(o2.getTitle().toLowerCase());
@@ -83,9 +83,30 @@ public class Data {
         });
     }
 
+    /**
+     * Add song to the queue
+     * @param song
+     */
+    public void addSongToQueue(Song song) {
+        //this.queue.add(song);
+        queueList.add(song);
+    }
+
+    /**
+     * Remove song to the queue
+     * @param song
+     */
+    public void removeSongFromQueue(Song song) {
+        queueList.remove(song);
+    }
+
     // Getters
-    public ObservableList<Song> getList() {
-        return list;
+    public ObservableList<Song> getSongList() {
+        return songList;
+    }
+
+    public ObservableList<Song> getQueueList() {
+        return queueList;
     }
 
     public Queue<Song> getQueue() {

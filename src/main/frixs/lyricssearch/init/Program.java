@@ -82,7 +82,7 @@ public class Program extends Application {
      * Initializes data
      */
     public void initData() {
-        Data.getInstance().generateLoremIpsumData();
+        Data.getInstance().generateLoremIpsumSongs();
     }
 
     /**

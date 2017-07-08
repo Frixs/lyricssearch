@@ -98,7 +98,7 @@ public class SearchMenuController {
      * Initializes search functionality
      */
     private void initSearch() {
-        ObservableList<Song> observableData = Data.getInstance().getList();
+        ObservableList<Song> observableData = Data.getInstance().getSongList();
         FilteredList<Song> filteredData     = new FilteredList<>(observableData, p -> true);
 
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -126,7 +126,7 @@ public class SearchMenuController {
         // Add sorted (and filtered) data to the search box.
         searchBoxLV.setItems(sortedData);
 
-        Log.getInstance().log(LogType.CONFIG, getClass().getName() +": searchBox completely initialized!");
+        Log.getInstance().log(LogType.CONFIG, getClass().getName() +": SearchBox completely initialized!");
     }
 
     // Getters

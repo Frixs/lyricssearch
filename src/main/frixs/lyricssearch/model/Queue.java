@@ -96,6 +96,53 @@ public class Queue<T> {
     }
 
     /**
+     * Remove item
+     * @param item     deleted item
+     */
+    public void remove(T item) { // TODO rebuild this method
+        Node currentNode = first;
+
+        for (int i = 0; i < this.getSize(); i++) {
+            if(currentNode.next.value.equals(item)) {
+                currentNode.next = currentNode.next.next;
+                break;
+            }
+            currentNode = currentNode.next;
+        }
+
+        this.size--;
+    }
+
+    /**
+     * Remove the first item from the list
+     * O(1)
+     * @return      the first item / deleted item
+     */
+    public T removeFirst() {
+        if(getSize() == 0) {
+            Log.getInstance().log(LogType.WARNING, getClass().getName() +": The list is empty!");
+            throw new IllegalStateException("The list is empty!");
+        }
+
+        T value = (T) this.first.value;
+        this.first = this.first.next;
+        this.size--;
+        return value;
+    }
+
+    /**
+     * Returns the first item of the list
+     * @return  the first item
+     */
+    public T getFirst() {
+        if(getSize() == 0) {
+            Log.getInstance().log(LogType.WARNING, getClass().getName() +": The list is empty!");
+            throw new IllegalStateException("The list is empty!");
+        }
+        return (T) this.first.value;
+    }
+
+    /**
      * Get size of the list
      * @return size of the list
      */
