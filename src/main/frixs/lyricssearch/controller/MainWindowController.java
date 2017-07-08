@@ -156,6 +156,10 @@ public class MainWindowController {
         return searchMenuController;
     }
 
+    public SettingMenuController getSettingMenuController() {
+        return settingMenuController;
+    }
+
     public PreviewTabController getPreviewTabController() {
         return previewTabController;
     }

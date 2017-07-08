@@ -90,6 +90,10 @@
     -fx-background-color: #ddd;
 }
 
+.lbl {
+    -fx-font-family: "Tahoma";
+}
+
 /**/
 /*  BUTTONS */
 /**/

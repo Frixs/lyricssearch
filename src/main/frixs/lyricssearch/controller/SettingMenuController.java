@@ -57,13 +57,14 @@ public class SettingMenuController {
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 int nv                = ((Double) newValue).intValue();
                 double pixelFullWidth = mainWindowController.getPreviewTabController().getLyricsTextSP().getParent().getBoundsInParent().getWidth();
-                System.out.println(nv +" "+ pixelFullWidth);
 
                 if (nv < 100) {
                     mainWindowController.getPreviewTabController().getLyricsTextSP().setMaxWidth((int)((pixelFullWidth / 100) * nv));
                 } else {
                     mainWindowController.getPreviewTabController().getLyricsTextSP().setMaxWidth(Region.USE_COMPUTED_SIZE);
                 }
+
+                //Log.getInstance().log(LogType.INFO, getClass().getName() +": Text width slider value was changed.");
             }
         });
     }
@@ -77,6 +78,8 @@ public class SettingMenuController {
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 int nv = ((Double) newValue).intValue();
                 mainWindowController.getPreviewTabController().getLyricsTextTF().setStyle("-fx-font-size:"+ nv);
+
+                //Log.getInstance().log(LogType.INFO, getClass().getName() +": Text size slider value was changed.");
             }
         });
     }
@@ -85,6 +88,8 @@ public class SettingMenuController {
     @FXML
     void onActionDarkThemeBTN(ActionEvent event) {
         // TODO dark theme switch
+
+        Log.getInstance().log(LogType.INFO, getClass().getName() +": Dark theme button was switched.");
     }
 
     // Getters

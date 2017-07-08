@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXSlider?>
 <?import com.jfoenix.controls.JFXToggleButton?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -34,11 +35,15 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="TEXT WIDTH" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <Label styleClass="lbl" text="TEXT WIDTH" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                   <JFXSlider fx:id="textWidthSLIDER" focusTraversable="false" value="100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0" />
-                  <Label text="TEXT SIZE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" />
+                  <Label styleClass="lbl" text="TEXT SIZE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" />
                   <JFXSlider fx:id="textSizeSLIDER" focusTraversable="false" max="72.0" min="8.0" value="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0" />
-                  <JFXToggleButton fx:id="darkThemeBTN" focusTraversable="false" onAction="#onActionDarkThemeBTN" styleClass="btn-norm-color" text="DARK THEME" toggleColor="#49da5f" toggleLineColor="#164d32" unToggleLineColor="#164d32" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="110.0" />
+                  <JFXToggleButton fx:id="darkThemeBTN" focusTraversable="false" onAction="#onActionDarkThemeBTN" text="DARK THEME" toggleColor="#49da5f" toggleLineColor="#164d32" unToggleLineColor="#164d32" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="110.0">
+                     <styleClass>
+                        <String fx:value="btn-norm-color" />
+                        <String fx:value="lbl" />
+                     </styleClass></JFXToggleButton>
                </children>
             </AnchorPane>
          </center>

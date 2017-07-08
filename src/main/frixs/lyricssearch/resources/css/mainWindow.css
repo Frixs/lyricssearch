@@ -79,7 +79,6 @@
 }
 
 #settingMenu {
-    -fx-font-family: "Tahoma";
     -fx-background-color: #164D32;
 }
 
@@ -94,5 +93,4 @@
 
 #settingMenu .label {
     -fx-text-fill: #fff;
-    -fx-font-family: "Tahoma";
 }
