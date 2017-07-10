@@ -16,6 +16,10 @@ public class Song {
         this.text   = new SimpleStringProperty(text);
     }
 
+    public Song(Song copyInstance) {
+        this(copyInstance.getTitle(), copyInstance.getText());
+    }
+
     // Getters & Setters
     public String getTitle() {
         return title.get();

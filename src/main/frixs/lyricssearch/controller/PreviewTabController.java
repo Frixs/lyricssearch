@@ -142,6 +142,19 @@ public class PreviewTabController {
         }
     }
 
+    @FXML
+    void onActionQueueNextBTN(ActionEvent event) {
+        if (Data.getInstance().getQueueList().size() > 0) {
+            Song removedSong = Data.getInstance().removeSongOnIndexFromQueue(0);
+            Log.getInstance().log(LogType.INFO, getClass().getName() + ": Song (" + removedSong.getTitle() + ") removed from queue.");
+            if (Data.getInstance().getQueueList().size() > 0) {
+                Song nextSong = Data.getInstance().getQueueList().get(0);
+                this.loadSong(nextSong);
+                Log.getInstance().log(LogType.INFO, getClass().getName() + ": Current song changed to " + nextSong.getTitle() + ".");
+            }
+        }
+    }
+
     // Getters
     public JFXButton getSearchMenuOpenBTN() {
         return this.searchMenuOpenBTN;

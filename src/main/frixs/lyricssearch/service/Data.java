@@ -2,7 +2,6 @@ package main.frixs.lyricssearch.service;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import main.frixs.lyricssearch.model.Queue;
 import main.frixs.lyricssearch.model.Song;
 
 import java.util.Collections;
@@ -18,8 +17,6 @@ public class Data {
     private ObservableList<Song> songList   = FXCollections.observableArrayList();
     /** observable queue */
     private ObservableList<Song> queueList  = FXCollections.observableArrayList();
-    /** queue of the songs */
-    private Queue<Song> queue               = new Queue<>();
 
     /**
      * No-parameter constructor
@@ -88,16 +85,25 @@ public class Data {
      * @param song
      */
     public void addSongToQueue(Song song) {
-        //this.queue.add(song);
         queueList.add(song);
     }
 
     /**
-     * Remove song to the queue
+     * Remove song from the queue
      * @param song
      */
     public void removeSongFromQueue(Song song) {
         queueList.remove(song);
+    }
+
+    /**
+     * Remove song from the queue on the current index
+     * @param index     removed index
+     */
+    public Song removeSongOnIndexFromQueue(int index) {
+        Song curr = new Song(queueList.get(index));
+        queueList.remove(index);
+        return curr;
     }
 
     // Getters
@@ -107,9 +113,5 @@ public class Data {
 
     public ObservableList<Song> getQueueList() {
         return queueList;
-    }
-
-    public Queue<Song> getQueue() {
-        return queue;
     }
 }

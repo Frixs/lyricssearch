@@ -77,6 +77,16 @@
                                  <center>
                                     <ScrollPane fx:id="queueSP" fitToHeight="true" fitToWidth="true" focusTraversable="false" hbarPolicy="NEVER" minWidth="0.0" styleClass="scrollpane-light" BorderPane.alignment="CENTER" />
                                  </center>
+                                 <top>
+                                    <AnchorPane prefHeight="60.0" styleClass="scrollpane-light" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <JFXButton focusTraversable="false" onAction="#onActionQueueNextBTN" prefHeight="40.0" styleClass="btn-norm-light" text="NEXT" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor></JFXButton>
+                                       </children>
+                                    </AnchorPane>
+                                 </top>
                               </BorderPane>
                            </children>
                         </AnchorPane>

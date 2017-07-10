@@ -29,10 +29,15 @@ public class QueueListCell extends JFXListCell<Song> {
             Pane pane       = new Pane();
             Label label     = new Label(item.getTitle());
             JFXButton btn   = new JFXButton();
+            Glyph glyph;
 
             hbox.getStyleClass().add("hbox");
+            // GLYPH styles
+            glyph = Glyph.create("FontAwesome|CLOSE");
+            glyph.setTranslateX(-1);
+            glyph.setTranslateY(-1);
             // BTN styles
-            btn.setGraphic(Glyph.create("FontAwesome|CLOSE"));
+            btn.setGraphic(glyph);
             btn.setPrefWidth(30);
             btn.setPrefHeight(30);
             // BTN event
