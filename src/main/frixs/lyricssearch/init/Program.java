@@ -8,8 +8,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.frixs.lyricssearch.controller.ProgramController;
 import main.frixs.lyricssearch.service.Data;
-import main.frixs.lyricssearch.service.Log;
-import main.frixs.lyricssearch.service.LogType;
+import main.frixs.lyricssearch.model.Log;
+import main.frixs.lyricssearch.model.LogType;
 
 import java.io.IOException;
 

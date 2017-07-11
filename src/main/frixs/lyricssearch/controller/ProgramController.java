@@ -2,8 +2,8 @@ package main.frixs.lyricssearch.controller;
 
 import javafx.fxml.FXML;
 import main.frixs.lyricssearch.init.Program;
-import main.frixs.lyricssearch.service.Log;
-import main.frixs.lyricssearch.service.LogType;
+import main.frixs.lyricssearch.model.Log;
+import main.frixs.lyricssearch.model.LogType;
 
 /**
  * @author Frixs

@@ -2,14 +2,16 @@ package main.frixs.lyricssearch.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import main.frixs.lyricssearch.init.Program;
-import main.frixs.lyricssearch.service.Log;
-import main.frixs.lyricssearch.service.LogType;
+import main.frixs.lyricssearch.model.*;
 
 import java.io.IOException;
 
@@ -23,13 +25,19 @@ public class MainWindowController {
     private int settingSideMenuWidth = 350;
     /** reference to Program controller */
     private ProgramController programController;
+    /** reference to AddNewTab controller */
+    private AddNewTabController addNewTabController = null;
+
     /** reference to SearchMenu controller */
     @FXML private SearchMenuController searchMenuController;
     /** reference to PreviewTab controller */
     @FXML private PreviewTabController previewTabController;
     /** reference to SettingMenu controller */
     @FXML private SettingMenuController settingMenuController;
-
+    /** Content pane */
+    @FXML private BorderPane contentBP;
+    /** Tab content */
+    @FXML private AnchorPane tabContentAP;
     /** searchMenu drawer */
     @FXML private JFXDrawer searchMenuDrawer;
     /** settingMenu drawer */
@@ -145,6 +153,31 @@ public class MainWindowController {
             Log.getInstance().log(LogType.SEVERE, getClass().getName() +": SettingMenu cannot be loaded!");
             e.printStackTrace();
         }
+    }
+
+    // Events
+    @FXML
+    void onActionPreviewTabWindowBTN(ActionEvent event) {
+        MainWindowTab window = new MainWindowTab(MainWindowTabType.PREVIEW);
+        this.contentBP.setCenter(window.getTabReference());
+        // TODO search menu move into preview pane + (rekapitulace, jestli by nebylo lepší si reference na záložky uchovávat a nevytvářet vždy nové objekty při otevření)
+    }
+
+    @FXML
+    void onActionAddNewWindowBTN(ActionEvent event) {
+        MainWindowTab window = new MainWindowTab(MainWindowTabType.ADDNEW);
+        this.contentBP.setCenter(window.getTabReference());
+
+        // Load FXML at first time
+        if (this.addNewTabController == null) {
+            this.addNewTabController = (AddNewTabController) window.getController();
+            this.addNewTabController.injectMainWindowController(this);
+        }
+    }
+
+    @FXML
+    void onActionManagementWindowBTN(ActionEvent event) {
+        // TODO management pane
     }
 
     // Getters

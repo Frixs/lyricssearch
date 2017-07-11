@@ -7,6 +7,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import main.frixs.lyricssearch.controller.PreviewTabController;
+import main.frixs.lyricssearch.model.Log;
+import main.frixs.lyricssearch.model.LogType;
 import main.frixs.lyricssearch.model.Song;
 import org.controlsfx.glyphfont.Glyph;
 

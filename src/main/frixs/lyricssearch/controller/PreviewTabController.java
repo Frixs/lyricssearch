@@ -11,25 +11,28 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import main.frixs.lyricssearch.model.ITabControllable;
 import main.frixs.lyricssearch.model.Song;
 import main.frixs.lyricssearch.service.Data;
-import main.frixs.lyricssearch.service.Log;
-import main.frixs.lyricssearch.service.LogType;
+import main.frixs.lyricssearch.model.Log;
+import main.frixs.lyricssearch.model.LogType;
 import main.frixs.lyricssearch.service.QueueListCell;
 
 /**
  * @author Frixs
  */
-public class PreviewTabController {
-    /** queue pane width in pixels */
-    private int queuePaneWidth = 250;
+public class PreviewTabController implements ITabControllable {
     /** reference to MainWindow controller */
     private MainWindowController mainWindowController;
+    /** queue pane width in pixels */
+    private int queuePaneWidth = 250;
     /** current displayed song */
     private Song currentSong = null;
     /** queue box */
     private JFXListView<Song> queueBoxLV;
 
+    /** root of the file */
+    @FXML private AnchorPane previewTab;
     /** searchMenu open BTN */
     @FXML private JFXButton searchMenuOpenBTN;
     /** Title label */

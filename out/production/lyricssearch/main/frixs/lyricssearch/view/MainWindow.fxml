@@ -10,12 +10,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import org.controlsfx.glyphfont.Glyph?>
 
-
 <AnchorPane fx:id="mainWindow" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.frixs.lyricssearch.controller.MainWindowController">
    <children>
-      <BorderPane layoutX="7.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="contentBP" layoutX="7.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="tabContentAP" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <fx:include fx:id="previewTab" source="PreviewTab.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <JFXDrawer fx:id="searchMenuDrawer" defaultDrawerSize="0.0" prefHeight="360.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -25,7 +24,7 @@
          <top>
             <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" styleClass="menu-main" BorderPane.alignment="CENTER">
                <children>
-                  <JFXRadioButton focusTraversable="false" layoutX="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="119.0" styleClass="radio-BTN" text="MANAGEMENT" AnchorPane.leftAnchor="187.0" AnchorPane.topAnchor="0.0">
+                  <JFXRadioButton focusTraversable="false" layoutX="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionManagementWindowBTN" prefHeight="30.0" prefWidth="119.0" styleClass="radio-BTN" text="MANAGEMENT" AnchorPane.leftAnchor="187.0" AnchorPane.topAnchor="0.0">
                      <toggleGroup>
                         <ToggleGroup fx:id="mainMenu" />
                      </toggleGroup>
@@ -39,7 +38,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXRadioButton>
-                  <JFXRadioButton focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="95.0" styleClass="radio-BTN" text="ADD NEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="0.0">
+                  <JFXRadioButton focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionAddNewWindowBTN" prefHeight="30.0" prefWidth="95.0" styleClass="radio-BTN" text="ADD NEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets bottom="-14.0" left="-7.0" />
                      </padding>
@@ -47,7 +46,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXRadioButton>
-                  <JFXRadioButton alignment="CENTER_LEFT" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="92.0" selected="true" styleClass="radio-BTN" text="PREVIEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <JFXRadioButton alignment="CENTER_LEFT" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionPreviewTabWindowBTN" prefHeight="30.0" prefWidth="92.0" selected="true" styleClass="radio-BTN" text="PREVIEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>

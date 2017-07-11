@@ -12,8 +12,8 @@ import javafx.scene.layout.BorderPane;
 import main.frixs.lyricssearch.model.Song;
 import main.frixs.lyricssearch.service.SearchListCell;
 import main.frixs.lyricssearch.service.Data;
-import main.frixs.lyricssearch.service.Log;
-import main.frixs.lyricssearch.service.LogType;
+import main.frixs.lyricssearch.model.Log;
+import main.frixs.lyricssearch.model.LogType;
 
 /**
  * @author Frixs

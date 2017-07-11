@@ -1,4 +1,4 @@
-package main.frixs.lyricssearch.service;
+package main.frixs.lyricssearch.model;
 
 /**
  * @author Frixs

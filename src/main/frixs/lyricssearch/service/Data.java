@@ -2,6 +2,8 @@ package main.frixs.lyricssearch.service;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import main.frixs.lyricssearch.model.Log;
+import main.frixs.lyricssearch.model.LogType;
 import main.frixs.lyricssearch.model.Song;
 
 import java.util.Collections;
