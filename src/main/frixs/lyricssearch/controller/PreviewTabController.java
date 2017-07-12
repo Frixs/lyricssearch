@@ -1,22 +1,29 @@
 package main.frixs.lyricssearch.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXListView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import main.frixs.lyricssearch.init.Program;
 import main.frixs.lyricssearch.model.ITabControllable;
 import main.frixs.lyricssearch.model.Song;
 import main.frixs.lyricssearch.service.Data;
 import main.frixs.lyricssearch.model.Log;
 import main.frixs.lyricssearch.model.LogType;
 import main.frixs.lyricssearch.service.QueueListCell;
+
+import java.io.IOException;
 
 /**
  * @author Frixs
@@ -26,6 +33,8 @@ public class PreviewTabController implements ITabControllable {
     private MainWindowController mainWindowController;
     /** queue pane width in pixels */
     private int queuePaneWidth = 250;
+    /** search side menu width in pixels */
+    private int searchSideMenuWidth = 260;
     /** current displayed song */
     private Song currentSong = null;
     /** queue box */
@@ -45,12 +54,18 @@ public class PreviewTabController implements ITabControllable {
     @FXML private AnchorPane queuePane;
     /** queue scroll pane */
     @FXML private ScrollPane queueSP;
+    /** searchMenu drawer */
+    @FXML private JFXDrawer searchMenuDrawer;
 
     /**
      * default initialize
      */
     @FXML
     private void initialize() {
+        // init search box
+        includeSearchMenu();
+
+        // init queue box
         queuePane.setVisible(false);
         queuePane.setPrefWidth(0);
 
@@ -72,6 +87,50 @@ public class PreviewTabController implements ITabControllable {
     }
 
     /**
+     * Method to append side search menu to the program
+     */
+    private void includeSearchMenu() {
+        try {
+            // load FXML file
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(Program.PATH_TO_SRC +"view/SearchMenu.fxml"));
+            Parent searchMenuWrapper = loader.load();
+
+            // inject this controller to searchMenu controller as a parent controller
+            SearchMenuController searchMenuController = loader.getController();
+            searchMenuController.injectPreviewTabController(this);
+
+            // set drawer side pane
+            searchMenuDrawer.setSidePane(searchMenuWrapper);
+
+            // set menu width
+            searchMenuDrawer.setTranslateX(-searchSideMenuWidth);
+            searchMenuDrawer.setDefaultDrawerSize(searchSideMenuWidth);
+            searchMenuDrawer.setPrefWidth(searchSideMenuWidth);
+
+            // add event handler to search BTN - open & close
+            this.searchMenuOpenBTN.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+                searchMenuDrawer.open();
+                searchMenuDrawer.setTranslateX(0);
+            });
+
+            // add event handler to close BTN
+            searchMenuController.getSearchMenuCloseBTN().addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+                searchMenuDrawer.close();
+                searchMenuDrawer.setOnDrawerClosed(event -> {
+                    searchMenuDrawer.setTranslateX(-searchSideMenuWidth);
+                });
+            });
+
+            Log.getInstance().log(LogType.CONFIG, getClass().getName() +": SearchMenu successfully included to layout!");
+
+        } catch (IOException e) {
+            Log.getInstance().log(LogType.SEVERE, getClass().getName() +": SearchMenu cannot be loaded!");
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Initializes queue box table with its parameters and event listeners
      */
     private void initQueueBox() {
@@ -89,6 +148,9 @@ public class PreviewTabController implements ITabControllable {
         queueBoxLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Song>() {
             @Override
             public void changed(ObservableValue<? extends Song> observable, Song oldValue, Song newValue) {
+                if (newValue == null)
+                    return;
+
                 loadSong(newValue);
                 Log.getInstance().log(LogType.INFO, getClass().getName() +": Current song changed to "+ newValue.getTitle() +".");
             }
@@ -115,7 +177,7 @@ public class PreviewTabController implements ITabControllable {
         this.currentSong = song;
 
         // set title label
-        titleLabel.setText("\u266B "+ this.currentSong.getTitle() +" \u266B");
+        this.titleLabel.setText("\u266B "+ this.currentSong.getTitle() +" \u266B");
 
         // create Text wrapper/box for lyrics
         Text text = new Text(this.currentSong.getText());
@@ -159,10 +221,6 @@ public class PreviewTabController implements ITabControllable {
     }
 
     // Getters
-    public JFXButton getSearchMenuOpenBTN() {
-        return this.searchMenuOpenBTN;
-    }
-
     public TextFlow getLyricsTextTF() {
         return this.textTF;
     }

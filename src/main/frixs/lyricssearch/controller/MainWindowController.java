@@ -19,14 +19,12 @@ import java.io.IOException;
  * @author Frixs
  */
 public class MainWindowController {
-    /** search side menu width in pixels */
-    private int searchSideMenuWidth = 260;
-    /** setting side menu width in pixels */
-    private int settingSideMenuWidth = 350;
     /** reference to Program controller */
     private ProgramController programController;
     /** reference to AddNewTab controller */
     private AddNewTabController addNewTabController = null;
+    /** setting side menu width in pixels */
+    private int settingSideMenuWidth = 350;
 
     /** reference to SearchMenu controller */
     @FXML private SearchMenuController searchMenuController;
@@ -36,10 +34,6 @@ public class MainWindowController {
     @FXML private SettingMenuController settingMenuController;
     /** Content pane */
     @FXML private BorderPane contentBP;
-    /** Tab content */
-    @FXML private AnchorPane tabContentAP;
-    /** searchMenu drawer */
-    @FXML private JFXDrawer searchMenuDrawer;
     /** settingMenu drawer */
     @FXML private JFXDrawer settingMenuDrawer;
     /** settingMenu open BTN */
@@ -52,7 +46,6 @@ public class MainWindowController {
     private void initialize() {
         previewTabController.injectMainWindowController(this);
         includeSettingMenu();
-        includeSearchMenu();
     }
 
     /**
@@ -64,50 +57,6 @@ public class MainWindowController {
             this.programController = programController;
         } else {
             Log.getInstance().log(LogType.WARNING, getClass().getName() +": You are trying to rewrite controller reference.");
-        }
-    }
-
-    /**
-     * Method to append side search menu to the program
-     */
-    private void includeSearchMenu() {
-        try {
-            // load FXML file
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(Program.PATH_TO_SRC +"view/SearchMenu.fxml"));
-            Parent searchMenuWrapper = loader.load();
-
-            // inject this controller to searchMenu controller as a parent controller
-            SearchMenuController searchMenuController = loader.getController();
-            searchMenuController.injectMainWindowController(this);
-
-            // set drawer side pane
-            searchMenuDrawer.setSidePane(searchMenuWrapper);
-
-            // set menu width
-            searchMenuDrawer.setTranslateX(-searchSideMenuWidth);
-            searchMenuDrawer.setDefaultDrawerSize(searchSideMenuWidth);
-            searchMenuDrawer.setPrefWidth(searchSideMenuWidth);
-
-            // add event handler to search BTN - open & close
-            previewTabController.getSearchMenuOpenBTN().addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-                searchMenuDrawer.open();
-                searchMenuDrawer.setTranslateX(0);
-            });
-
-            // add event handler to close BTN
-            searchMenuController.getSearchMenuCloseBTN().addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-                searchMenuDrawer.close();
-                searchMenuDrawer.setOnDrawerClosed(event -> {
-                    searchMenuDrawer.setTranslateX(-searchSideMenuWidth);
-                });
-            });
-
-            Log.getInstance().log(LogType.CONFIG, getClass().getName() +": SearchMenu successfully included to layout!");
-
-        } catch (IOException e) {
-            Log.getInstance().log(LogType.SEVERE, getClass().getName() +": SearchMenu cannot be loaded!");
-            e.printStackTrace();
         }
     }
 

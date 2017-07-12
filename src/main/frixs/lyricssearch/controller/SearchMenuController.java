@@ -6,7 +6,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import main.frixs.lyricssearch.model.Song;
@@ -20,7 +22,7 @@ import main.frixs.lyricssearch.model.LogType;
  */
 public class SearchMenuController {
     /** reference to MainWindow controller */
-    private MainWindowController    mainWindowController;
+    private PreviewTabController previewTabController;
     /** search box */
     private JFXListView<Song>       searchBoxLV;
 
@@ -58,11 +60,11 @@ public class SearchMenuController {
 
     /**
      * Inject parent - MainWindowController reference to this controller
-     * @param mainWindowController     instance of the MainWindow controller
+     * @param previewTabController     instance of the MainWindow controller
      */
-    public void injectMainWindowController(MainWindowController mainWindowController) {
-        if(this.mainWindowController == null) {
-            this.mainWindowController = mainWindowController;
+    public void injectPreviewTabController(PreviewTabController previewTabController) {
+        if(this.previewTabController == null) {
+            this.previewTabController = previewTabController;
         } else {
             Log.getInstance().log(LogType.WARNING, getClass().getName() +": You are trying to rewrite controller reference.");
         }
@@ -86,8 +88,11 @@ public class SearchMenuController {
         searchBoxLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Song>() {
             @Override
             public void changed(ObservableValue<? extends Song> observable, Song oldValue, Song newValue) {
-                getMainWindowController().getPreviewTabController().loadSong(newValue);
-                Log.getInstance().log(LogType.INFO, getClass().getName() +": Current song changed to "+ newValue.getTitle() +".");
+                if(newValue == null)
+                    return;
+
+                previewTabController.loadSong(newValue);
+                Log.getInstance().log(LogType.INFO, getClass().getName() + ": Current song changed to " + newValue.getTitle() + ".");
             }
         });
 
@@ -132,13 +137,5 @@ public class SearchMenuController {
     // Getters
     public JFXButton getSearchMenuCloseBTN() {
         return searchMenuCloseBTN;
-    }
-
-    public JFXListView<Song> getSearchBoxLV() {
-        return searchBoxLV;
-    }
-
-    public MainWindowController getMainWindowController() {
-        return mainWindowController;
     }
 }

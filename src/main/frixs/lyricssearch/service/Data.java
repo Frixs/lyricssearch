@@ -103,6 +103,9 @@ public class Data {
      * @param index     removed index
      */
     public Song removeSongOnIndexFromQueue(int index) {
+        if (queueList.get(index) == null)
+            return null;
+
         Song curr = new Song(queueList.get(index));
         queueList.remove(index);
         return curr;

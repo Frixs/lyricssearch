@@ -13,14 +13,6 @@
 <AnchorPane fx:id="mainWindow" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.frixs.lyricssearch.controller.MainWindowController">
    <children>
       <BorderPane fx:id="contentBP" layoutX="7.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <center>
-            <AnchorPane fx:id="tabContentAP" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <fx:include fx:id="previewTab" source="PreviewTab.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <JFXDrawer fx:id="searchMenuDrawer" defaultDrawerSize="0.0" prefHeight="360.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-               </children>
-            </AnchorPane>
-         </center>
          <top>
             <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" styleClass="menu-main" BorderPane.alignment="CENTER">
                <children>
@@ -68,6 +60,9 @@
                </children>
             </AnchorPane>
          </top>
+         <center>
+            <fx:include fx:id="previewTab" source="PreviewTab.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </center>
       </BorderPane>
       <JFXDrawer fx:id="settingMenuDrawer" defaultDrawerSize="0.0" direction="RIGHT" prefHeight="360.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
