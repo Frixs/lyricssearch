@@ -49,21 +49,23 @@ public class SettingMenuController {
     }
 
     /**
+     * Reload settings / on load
+     */
+    public void reloadSettings() {
+        setTextWidth(getTextWidth());
+        setTextSize(getTextSize());
+        // TODO dark theme switch
+    }
+
+    /**
      * Set drag event listener
      */
     private void setDragEventTextWidthSLIDER() {
         this.textWidthSLIDER.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                int nv                = ((Double) newValue).intValue();
-                double pixelFullWidth = mainWindowController.getPreviewTabController().getLyricsTextSP().getParent().getBoundsInParent().getWidth();
-
-                if (nv < 100) {
-                    mainWindowController.getPreviewTabController().getLyricsTextSP().setMaxWidth((int)((pixelFullWidth / 100) * nv));
-                } else {
-                    mainWindowController.getPreviewTabController().getLyricsTextSP().setMaxWidth(Region.USE_COMPUTED_SIZE);
-                }
-
+                int nv = ((Double) newValue).intValue();
+                setTextWidth(nv);
                 //Log.getInstance().log(LogType.INFO, getClass().getName() +": Text width slider value was changed.");
             }
         });
@@ -77,8 +79,7 @@ public class SettingMenuController {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 int nv = ((Double) newValue).intValue();
-                mainWindowController.getPreviewTabController().getLyricsTextTF().setStyle("-fx-font-size:"+ nv);
-
+                setTextSize(nv);
                 //Log.getInstance().log(LogType.INFO, getClass().getName() +": Text size slider value was changed.");
             }
         });
@@ -95,5 +96,28 @@ public class SettingMenuController {
     // Getters
     public JFXButton getSettingMenuCloseBTN() {
         return settingMenuCloseBTN;
+    }
+
+    public int getTextWidth() {
+        return this.textWidthSLIDER.valueProperty().getValue().intValue();
+    }
+
+    public int getTextSize() {
+        return this.textSizeSLIDER.valueProperty().getValue().intValue();
+    }
+
+    // Setters
+    public void setTextWidth(int width) {
+        double pixelFullWidth = mainWindowController.getContentBP().getWidth();
+
+        if (width < 100) {
+            mainWindowController.getPreviewTabController().getLyricsTextSP().setMaxWidth((int)((pixelFullWidth / 100) * width));
+        } else {
+            mainWindowController.getPreviewTabController().getLyricsTextSP().setMaxWidth(Region.USE_COMPUTED_SIZE);
+        }
+    }
+
+    public void setTextSize(int size) {
+        mainWindowController.getPreviewTabController().getLyricsTextTF().setStyle("-fx-font-size:"+ size);
     }
 }

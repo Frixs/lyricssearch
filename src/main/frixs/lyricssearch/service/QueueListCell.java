@@ -62,10 +62,9 @@ public class QueueListCell extends JFXListCell<Song> {
      * @param previewTabController     instance of the previewTab controller
      */
     public static void injectPreviewTabController(PreviewTabController previewTabController) {
-        if(QueueListCell.previewTabController == null) {
-            QueueListCell.previewTabController = previewTabController;
-        } else {
-            Log.getInstance().log(LogType.WARNING, QueueListCell.class.getName() +": You are trying to rewrite controller reference.");
+        if(QueueListCell.previewTabController != null) {
+            Log.getInstance().log(LogType.WARNING, QueueListCell.class.getName() + ": You just rewrote controller reference.");
         }
+        QueueListCell.previewTabController = previewTabController;
     }
 }

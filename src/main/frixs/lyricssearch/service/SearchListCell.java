@@ -57,10 +57,9 @@ public class SearchListCell extends JFXListCell<Song> {
      * @param searchMenuController     instance of the SearchMenu controller
      */
     public static void injectSearchMenuController(SearchMenuController searchMenuController) {
-        if(SearchListCell.searchMenuController == null) {
-            SearchListCell.searchMenuController = searchMenuController;
-        } else {
-            Log.getInstance().log(LogType.WARNING, SearchListCell.class.getName() +": You are trying to rewrite controller reference.");
+        if(SearchListCell.searchMenuController != null) {
+            Log.getInstance().log(LogType.WARNING, SearchListCell.class.getName() + ": You just rewrote controller reference.");
         }
+        SearchListCell.searchMenuController = searchMenuController;
     }
 }

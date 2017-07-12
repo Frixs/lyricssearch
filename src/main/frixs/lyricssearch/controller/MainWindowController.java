@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import main.frixs.lyricssearch.init.Program;
 import main.frixs.lyricssearch.model.*;
@@ -71,8 +70,8 @@ public class MainWindowController {
             Parent settingMenuWrapper = loader.load();
 
             // inject this controller to settingMenu controller as a parent controller
-            SettingMenuController settingMenuController = loader.getController();
-            settingMenuController.injectMainWindowController(this);
+            this.settingMenuController = loader.getController();
+            this.settingMenuController.injectMainWindowController(this);
 
             // set drawer side pane
             settingMenuDrawer.setSidePane(settingMenuWrapper);
@@ -89,7 +88,7 @@ public class MainWindowController {
             });
 
             // add event handler to close BTN
-            settingMenuController.getSettingMenuCloseBTN().addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+            this.settingMenuController.getSettingMenuCloseBTN().addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
                 settingMenuDrawer.close();
                 settingMenuDrawer.setOnDrawerClosed(event -> {
                     settingMenuDrawer.setTranslateX(settingSideMenuWidth);
@@ -107,25 +106,27 @@ public class MainWindowController {
     // Events
     @FXML
     void onActionPreviewTabWindowBTN(ActionEvent event) {
+        Log.getInstance().log(LogType.INFO, getClass().getName() +": MainWindow "+ MainWindowTabType.PREVIEW.toString() +" tab swapped.");
         MainWindowTab window = new MainWindowTab(MainWindowTabType.PREVIEW);
+        this.previewTabController = (PreviewTabController) window.getController();
+        this.previewTabController.injectMainWindowController(this);
         this.contentBP.setCenter(window.getTabReference());
-        // TODO search menu move into preview pane + (rekapitulace, jestli by nebylo lepší si reference na záložky uchovávat a nevytvářet vždy nové objekty při otevření)
+        // reloadSettings settings
+        this.settingMenuController.reloadSettings();
     }
 
     @FXML
     void onActionAddNewWindowBTN(ActionEvent event) {
+        Log.getInstance().log(LogType.INFO, getClass().getName() +": MainWindow "+ MainWindowTabType.ADDNEW.toString() +" tab swapped.");
         MainWindowTab window = new MainWindowTab(MainWindowTabType.ADDNEW);
+        this.addNewTabController = (AddNewTabController) window.getController();
+        this.addNewTabController.injectMainWindowController(this);
         this.contentBP.setCenter(window.getTabReference());
-
-        // Load FXML at first time
-        if (this.addNewTabController == null) {
-            this.addNewTabController = (AddNewTabController) window.getController();
-            this.addNewTabController.injectMainWindowController(this);
-        }
     }
 
     @FXML
     void onActionManagementWindowBTN(ActionEvent event) {
+        Log.getInstance().log(LogType.INFO, getClass().getName() +": MainWindow "+ MainWindowTabType.MANAGEMENT.toString() +" tab swapped.");
         // TODO management pane
     }
 
@@ -144,5 +145,9 @@ public class MainWindowController {
 
     public PreviewTabController getPreviewTabController() {
         return previewTabController;
+    }
+
+    public BorderPane getContentBP() {
+        return contentBP;
     }
 }

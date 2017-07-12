@@ -69,9 +69,9 @@ public class PreviewTabController implements ITabControllable {
         queuePane.setVisible(false);
         queuePane.setPrefWidth(0);
 
-        initQueueBox();
+        buildQueueBox();
         this.queueSP.setContent(this.queueBoxLV);
-        initQueue();
+        initQueueBox();
     }
 
     /**
@@ -133,7 +133,7 @@ public class PreviewTabController implements ITabControllable {
     /**
      * Initializes queue box table with its parameters and event listeners
      */
-    private void initQueueBox() {
+    private void buildQueueBox() {
         queueBoxLV = new JFXListView<>();
 
         // inject this controller reference to QueueListCell class
@@ -162,7 +162,7 @@ public class PreviewTabController implements ITabControllable {
     /**
      * Initializes queue data
      */
-    private void initQueue() {
+    private void initQueueBox() {
         queueBoxLV.setItems(Data.getInstance().getQueueList());
 
         Log.getInstance().log(LogType.CONFIG, getClass().getName() +": QueueBox completely initialized!");
