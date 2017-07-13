@@ -11,6 +11,7 @@ import main.frixs.lyricssearch.service.Data;
 import main.frixs.lyricssearch.model.Log;
 import main.frixs.lyricssearch.model.LogType;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -21,9 +22,15 @@ public class Program extends Application {
     public static final String      APP_NAME        = "LyricsSearch";
     public static final String      VERSION         = "1.0.0";
     public static final String      VERSION_PREFIX  = "v";
+    /** Application window min height */
     public static final int         MIN_HEIGHT      = 480;
+    /** Application window min width */
     public static final int         MIN_WIDTH       = 640;
+    /** Package structure path */
     public static final String      PATH_TO_SRC     = "/main/frixs/lyricssearch/";
+    /** Data path from the root structure (or from the application file) */
+    public static final String      DATA_PATH       = File.separator + "lyricssearch_data.xml";
+
     private Stage                   primaryStage;
     private Parent                  rootLayout;
 
@@ -82,7 +89,8 @@ public class Program extends Application {
      * Initializes data
      */
     public void initData() {
-        Data.getInstance().generateLoremIpsumSongs();
+        Data.getInstance().loadSongs();
+        //Data.getInstance().generateLoremIpsumSongs();
     }
 
     /**

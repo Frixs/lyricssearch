@@ -1,11 +1,22 @@
 package main.frixs.lyricssearch.service;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import main.frixs.lyricssearch.init.Program;
+import main.frixs.lyricssearch.model.CustomInformAlert;
 import main.frixs.lyricssearch.model.Log;
 import main.frixs.lyricssearch.model.LogType;
 import main.frixs.lyricssearch.model.Song;
 
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -65,21 +76,10 @@ public class Data {
      * Load all songs from the database file
      */
     public void loadSongs() {
+        ArrayList<Song> list = getStoredSongs();
         // TODO add song - file (xml) structure
 
         Log.getInstance().log(LogType.CONFIG, getClass().getName() +": Data successfully loaded!");
-    }
-
-    /**
-     *  Sort this.songList alphabetically
-     */
-    private void sortSongs() {
-        Collections.sort(this.songList, new Comparator<Song>() {
-            @Override
-            public int compare(Song o1, Song o2) {
-                return o1.getTitle().toLowerCase().compareTo(o2.getTitle().toLowerCase());
-            }
-        });
     }
 
     /**
@@ -109,6 +109,42 @@ public class Data {
         Song curr = new Song(queueList.get(index));
         queueList.remove(index);
         return curr;
+    }
+
+    /**
+     *  Sort this.songList alphabetically
+     */
+    private void sortSongs() {
+        Collections.sort(this.songList, new Comparator<Song>() {
+            @Override
+            public int compare(Song o1, Song o2) {
+                return o1.getTitle().toLowerCase().compareTo(o2.getTitle().toLowerCase());
+            }
+        });
+    }
+
+    /**
+     * Get all stored songs
+     * @return      list of the songs
+     */
+    private ArrayList<Song> getStoredSongs() {
+        ArrayList<Song> list = new ArrayList<>();
+
+        try {
+            XMLInputFactory factory     = XMLInputFactory.newInstance();
+            XMLEventReader eventReader  = factory.createXMLEventReader(new FileReader(
+                    new File(new File("./").getCanonicalPath() + Program.DATA_PATH)
+            ));
+
+        } catch (Exception e) {
+            Log.getInstance().log(LogType.SEVERE, getClass().getName() +": Error occurs during reading data!");
+            e.printStackTrace();
+            new CustomInformAlert(Alert.AlertType.ERROR, "Error message", "Error occurs during reading data!", e.getMessage());
+            Platform.exit();
+
+        }
+
+        return list;
     }
 
     // Getters
