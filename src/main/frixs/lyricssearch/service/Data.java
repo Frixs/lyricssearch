@@ -86,6 +86,14 @@ public class Data {
     }
 
     /**
+     * Add new song to the list and to the data file
+     * @param song      new song instance
+     */
+    public void addNewSong(Song song) {
+        // TODO add new song
+    }
+
+    /**
      * Add song to the queue
      * @param song
      */
@@ -196,7 +204,7 @@ public class Data {
         } catch (Exception e) {
             Log.getInstance().log(LogType.SEVERE, getClass().getName() +": Error occurs during reading data!");
             e.printStackTrace();
-            new CustomInformAlert(Alert.AlertType.ERROR, "Error message", "Error occurs during reading data!", e.getMessage());
+            new CustomInformAlert(Alert.AlertType.ERROR, Program.APP_NAME +" | "+ Alert.AlertType.ERROR.toString(), "Error occurs during reading data!", e.getMessage());
             Platform.exit();
 
         }

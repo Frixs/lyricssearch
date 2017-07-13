@@ -4,10 +4,11 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
-import main.frixs.lyricssearch.model.ITabControllable;
-import main.frixs.lyricssearch.model.Log;
-import main.frixs.lyricssearch.model.LogType;
+import main.frixs.lyricssearch.init.Program;
+import main.frixs.lyricssearch.model.*;
+import main.frixs.lyricssearch.service.Data;
 
 /**
  * @author Frixs
@@ -45,6 +46,15 @@ public class AddNewTabController implements ITabControllable {
     // Events
     @FXML
     void onActionSubmitBTN(ActionEvent event) {
+        String title    = songTitleTF.getText();
+        String text     = songLyricsTA.getText();
 
+        if (title.length() > 0 && text.length() > 0) {
+            Data.getInstance().addNewSong(new Song(title, text));
+
+            Log.getInstance().log(LogType.INFO, getClass().getName() +": Added new song - "+ title +".");
+        } else {
+            new CustomInformAlert(Alert.AlertType.WARNING, Program.APP_NAME +" | "+ Alert.AlertType.WARNING.toString(), "Some text fields are empty.", "Please, fill empty text fields in the form.");
+        }
     }
 }
