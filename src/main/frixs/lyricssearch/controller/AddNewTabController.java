@@ -1,6 +1,10 @@
 package main.frixs.lyricssearch.controller;
 
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 import main.frixs.lyricssearch.model.ITabControllable;
 import main.frixs.lyricssearch.model.Log;
 import main.frixs.lyricssearch.model.LogType;
@@ -11,6 +15,13 @@ import main.frixs.lyricssearch.model.LogType;
 public class AddNewTabController implements ITabControllable {
     /** reference to MainWindow controller */
     private MainWindowController mainWindowController;
+
+    /** root pane */
+    @FXML private AnchorPane addNewTab;
+    /** title text field */
+    @FXML private JFXTextField songTitleTF;
+    /** lyrics text area */
+    @FXML private JFXTextArea songLyricsTA;
 
     /**
      * default initialize
@@ -29,5 +40,11 @@ public class AddNewTabController implements ITabControllable {
         } else {
             Log.getInstance().log(LogType.WARNING, getClass().getName() +": You are trying to rewrite controller reference.");
         }
+    }
+
+    // Events
+    @FXML
+    void onActionSubmitBTN(ActionEvent event) {
+
     }
 }

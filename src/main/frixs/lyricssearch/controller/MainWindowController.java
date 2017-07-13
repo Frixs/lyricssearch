@@ -106,7 +106,7 @@ public class MainWindowController {
     // Events
     @FXML
     void onActionPreviewTabWindowBTN(ActionEvent event) {
-        Log.getInstance().log(LogType.INFO, getClass().getName() +": MainWindow "+ MainWindowTabType.PREVIEW.toString() +" tab swapped.");
+        Log.getInstance().log(LogType.INFO, getClass().getName() +": MainWindow - "+ MainWindowTabType.PREVIEW.toString() +"Tab swapped.");
         MainWindowTab window = new MainWindowTab(MainWindowTabType.PREVIEW);
         this.previewTabController = (PreviewTabController) window.getController();
         this.previewTabController.injectMainWindowController(this);
@@ -117,7 +117,7 @@ public class MainWindowController {
 
     @FXML
     void onActionAddNewWindowBTN(ActionEvent event) {
-        Log.getInstance().log(LogType.INFO, getClass().getName() +": MainWindow "+ MainWindowTabType.ADDNEW.toString() +" tab swapped.");
+        Log.getInstance().log(LogType.INFO, getClass().getName() +": MainWindow - "+ MainWindowTabType.ADDNEW.toString() +"Tab swapped.");
         MainWindowTab window = new MainWindowTab(MainWindowTabType.ADDNEW);
         this.addNewTabController = (AddNewTabController) window.getController();
         this.addNewTabController.injectMainWindowController(this);
@@ -126,7 +126,7 @@ public class MainWindowController {
 
     @FXML
     void onActionManagementWindowBTN(ActionEvent event) {
-        Log.getInstance().log(LogType.INFO, getClass().getName() +": MainWindow "+ MainWindowTabType.MANAGEMENT.toString() +" tab swapped.");
+        Log.getInstance().log(LogType.INFO, getClass().getName() +": MainWindow - "+ MainWindowTabType.MANAGEMENT.toString() +"Tab swapped.");
         // TODO management pane
     }
 

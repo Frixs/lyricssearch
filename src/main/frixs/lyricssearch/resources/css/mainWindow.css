@@ -5,6 +5,32 @@
     -fx-font-weight: bold;
 }
 
+.title-dark {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 16;
+    -fx-text-fill: #222222;
+    -fx-font-weight: bold;
+}
+
+.label-dark {
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 14;
+    -fx-text-fill: #222222;
+}
+
+.textarea-bg-light {
+    -fx-background-color: #eaeaea;
+}
+
+.textarea-bg-light .content {
+    -fx-background-color: #eaeaea;
+}
+
+.textarea-bg-light:focused,
+.textarea-bg-light:focused .content {
+    -fx-background-color: #dedede;
+}
+
 .preview-tab-content-bp {
     -fx-background-color: #fff;
 }
