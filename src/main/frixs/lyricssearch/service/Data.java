@@ -12,6 +12,8 @@ import main.frixs.lyricssearch.model.Song;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.events.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -19,6 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 
 /**
  * @author Frixs
@@ -76,8 +79,8 @@ public class Data {
      * Load all songs from the database file
      */
     public void loadSongs() {
-        ArrayList<Song> list = getStoredSongs();
-        // TODO add song - file (xml) structure
+        this.songList = FXCollections.observableArrayList(getStoredSongs());
+        this.sortSongs();
 
         Log.getInstance().log(LogType.CONFIG, getClass().getName() +": Data successfully loaded!");
     }
@@ -128,13 +131,67 @@ public class Data {
      * @return      list of the songs
      */
     private ArrayList<Song> getStoredSongs() {
-        ArrayList<Song> list = new ArrayList<>();
+        ArrayList<Song> list    = new ArrayList<>();
+        boolean bTitle          = false;
+        boolean bText           = false;
+        String sTitle           = "";
+        String sText            = "";
 
         try {
             XMLInputFactory factory     = XMLInputFactory.newInstance();
             XMLEventReader eventReader  = factory.createXMLEventReader(new FileReader(
                     new File(new File("./").getCanonicalPath() + Program.DATA_PATH)
             ));
+
+            while (eventReader.hasNext()) {
+                XMLEvent event = eventReader.nextEvent();
+
+                switch (event.getEventType()) {
+                    case XMLStreamConstants.START_ELEMENT:
+                        StartElement startElement   = event.asStartElement();
+                        String qName                = startElement.getName().getLocalPart();
+
+                        if (qName.equalsIgnoreCase("song")) {
+                            //System.out.println("Start Element : song");
+                        } else if (qName.equalsIgnoreCase("title")) {
+                            bTitle = true;
+                        } else if (qName.equalsIgnoreCase("text")) {
+                            bText = true;
+                        }
+                        break;
+
+                    case XMLStreamConstants.CHARACTERS:
+                        Characters characters = event.asCharacters();
+
+                        if (bTitle) {
+                            //System.out.println("Title: "+ characters.getData());
+                            sTitle = characters.getData();
+                            bTitle = false;
+                        }
+                        if (bText) {
+                            //System.out.println("Text: "+ characters.getData());
+                            sText = characters.getData();
+                            bText = false;
+                        }
+                        break;
+
+                    case  XMLStreamConstants.END_ELEMENT:
+                        EndElement endElement = event.asEndElement();
+
+                        if (endElement.getName().getLocalPart().equalsIgnoreCase("song")) {
+                            //System.out.println("End Element : song\n");
+                        }
+                        break;
+                }
+
+                if (sTitle.length() > 0 && sText.length() > 0) {
+                    list.add(new Song(sTitle, sText));
+                    sTitle = "";
+                    sText  = "";
+                }
+            }
+
+            Log.getInstance().log(LogType.CONFIG, getClass().getName() +": Reading songs successfully finished from data file.");
 
         } catch (Exception e) {
             Log.getInstance().log(LogType.SEVERE, getClass().getName() +": Error occurs during reading data!");
