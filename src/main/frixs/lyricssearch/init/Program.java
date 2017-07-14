@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import main.frixs.lyricssearch.controller.ProgramController;
 import main.frixs.lyricssearch.service.Data;
@@ -61,6 +62,10 @@ public class Program extends Application {
             rootLayout = loader.load();
 
             ProgramController programController = loader.getController();
+
+            //set icon of the application
+            Image applicationIcon = new Image(getClass().getResourceAsStream(Program.PATH_TO_SRC +"resources/images/icon.png"));
+            primaryStage.getIcons().add(applicationIcon);
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout, MIN_WIDTH, MIN_HEIGHT);
