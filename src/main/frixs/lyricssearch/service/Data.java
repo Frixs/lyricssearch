@@ -10,14 +10,9 @@ import main.frixs.lyricssearch.model.Log;
 import main.frixs.lyricssearch.model.LogType;
 import main.frixs.lyricssearch.model.Song;
 
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.*;
 import javax.xml.stream.events.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -90,7 +85,72 @@ public class Data {
      * @param song      new song instance
      */
     public void addNewSong(Song song) {
-        // TODO add new song
+        // create line breaks with replacing line break characters
+        song.setText(song.getText().replaceAll("\\\\n", "\n"));
+
+        this.songList.add(song);
+
+        this.writeNewDataFile(this.songList);
+    }
+
+    /**
+     * Rewrite data file
+     * @param songList      Song list
+     */
+    public void writeNewDataFile(ObservableList<Song> songList) {
+        BufferedWriter bw = null;
+
+        try {
+            StringWriter stringWriter = new StringWriter();
+
+            XMLOutputFactory xMLOutputFactory   = XMLOutputFactory.newInstance();
+            XMLStreamWriter xMLStreamWriter     = xMLOutputFactory.createXMLStreamWriter(stringWriter);
+
+            xMLStreamWriter.writeStartDocument();
+            xMLStreamWriter.writeStartElement("songs");
+
+            for (Song song : songList) {
+                xMLStreamWriter.writeStartElement("song");
+                xMLStreamWriter.writeStartElement("title");
+                xMLStreamWriter.writeCharacters(
+                        song.getTitle()
+                                .replaceAll("(\\r|\\n|\\t|\\r\\n)", " ")
+                );
+                xMLStreamWriter.writeEndElement();
+                xMLStreamWriter.writeStartElement("text");
+                xMLStreamWriter.writeCharacters(
+                        song.getText()
+                                .replaceAll("(\\r|\\n|\\t|\\r\\n)", "\\\\n")
+                );
+                xMLStreamWriter.writeEndElement();
+                xMLStreamWriter.writeEndElement();
+            }
+
+            xMLStreamWriter.writeEndElement();
+            xMLStreamWriter.writeEndDocument();
+
+            xMLStreamWriter.flush();
+            xMLStreamWriter.close();
+
+            String xmlString = stringWriter.getBuffer().toString();
+            stringWriter.close();
+
+            // write content to the file
+            bw = new BufferedWriter(new FileWriter(new File(new File("./").getCanonicalPath() + Program.DATA_PATH)));
+            bw.write(xmlString);
+            bw.close();
+
+        } catch (XMLStreamException e) {
+            Log.getInstance().log(LogType.SEVERE, getClass().getName() +": Error occurs during writing data!");
+            e.printStackTrace();
+            new CustomInformAlert(Alert.AlertType.ERROR, Program.APP_NAME +" | "+ Alert.AlertType.ERROR.toString(), "Error occurs during writing data!", e.getMessage());
+            Platform.exit();
+        } catch (IOException e) {
+            Log.getInstance().log(LogType.SEVERE, getClass().getName() +": Error occurs during writing data!");
+            e.printStackTrace();
+            new CustomInformAlert(Alert.AlertType.ERROR, Program.APP_NAME +" | "+ Alert.AlertType.ERROR.toString(), "Error occurs during writing data!", e.getMessage());
+            Platform.exit();
+        }
     }
 
     /**
@@ -178,7 +238,7 @@ public class Data {
                         }
                         if (bText) {
                             //System.out.println("Text: "+ characters.getData());
-                            sText = characters.getData();
+                            sText = characters.getData().replaceAll("\\\\n", "\n");
                             bText = false;
                         }
                         break;

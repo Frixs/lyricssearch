@@ -46,13 +46,17 @@ public class AddNewTabController implements ITabControllable {
     // Events
     @FXML
     void onActionSubmitBTN(ActionEvent event) {
-        String title    = songTitleTF.getText();
-        String text     = songLyricsTA.getText();
+        String title    = songTitleTF.getText() .replaceAll("(\\r|\\n|\\t|\\r\\n)", " ")    .trim();
+        String text     = songLyricsTA.getText().replaceAll("(\\r|\\n|\\t|\\r\\n)", "\\\\n").trim();
 
         if (title.length() > 0 && text.length() > 0) {
             Data.getInstance().addNewSong(new Song(title, text));
-
             Log.getInstance().log(LogType.INFO, getClass().getName() +": Added new song - "+ title +".");
+
+            songTitleTF.setText("");
+            songLyricsTA.setText("");
+            new CustomInformAlert(Alert.AlertType.INFORMATION, Program.APP_NAME +" | "+ Alert.AlertType.INFORMATION.toString(), "The song was successfully added!", "The song is ready to use.");
+
         } else {
             new CustomInformAlert(Alert.AlertType.WARNING, Program.APP_NAME +" | "+ Alert.AlertType.WARNING.toString(), "Some text fields are empty.", "Please, fill empty text fields in the form.");
         }
