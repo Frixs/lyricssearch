@@ -138,7 +138,7 @@
     -fx-size: 35;
     -fx-border-width: 0 0 2 0;
     -fx-border-color: #0f9d58;
-    -fx-border-insets: 0 20 1 8;
+    -fx-border-insets: 0 13 0 7;
     -fx-background-color: transparent;
 }
 
@@ -150,6 +150,13 @@
     -fx-opacity: 1;
 }
 
-.table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: -fx-focus-color;
+.table-cell {
+  -fx-padding: 0 10 0 10;
+  -fx-alignment: center-left;
+}
+
+.table-row-cell:selected:focused .table-cell {
+    -fx-background-color: #dedede;
+    -fx-border-color: #eee;
+    -fx-text-fill: black;
 }

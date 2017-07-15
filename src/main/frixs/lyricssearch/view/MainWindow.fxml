@@ -16,7 +16,7 @@
          <top>
             <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" styleClass="menu-main" BorderPane.alignment="CENTER">
                <children>
-                  <JFXRadioButton focusTraversable="false" layoutX="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionManagementWindowBTN" prefHeight="30.0" prefWidth="119.0" styleClass="radio-BTN" text="MANAGEMENT" AnchorPane.leftAnchor="187.0" AnchorPane.topAnchor="0.0">
+                  <JFXRadioButton contentDisplay="CENTER" focusTraversable="false" layoutX="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionManagementWindowBTN" prefHeight="30.0" prefWidth="119.0" styleClass="radio-BTN" text="MANAGEMENT" AnchorPane.leftAnchor="187.0" AnchorPane.topAnchor="0.0">
                      <toggleGroup>
                         <ToggleGroup fx:id="mainMenu" />
                      </toggleGroup>
@@ -30,7 +30,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXRadioButton>
-                  <JFXRadioButton focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionAddNewWindowBTN" prefHeight="30.0" prefWidth="95.0" styleClass="radio-BTN" text="ADD NEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="0.0">
+                  <JFXRadioButton contentDisplay="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionAddNewWindowBTN" prefHeight="30.0" prefWidth="95.0" styleClass="radio-BTN" text="ADD NEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets bottom="-14.0" left="-7.0" />
                      </padding>
@@ -38,7 +38,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXRadioButton>
-                  <JFXRadioButton alignment="CENTER_LEFT" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionPreviewTabWindowBTN" prefHeight="30.0" prefWidth="92.0" selected="true" styleClass="radio-BTN" text="PREVIEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <JFXRadioButton contentDisplay="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionPreviewTabWindowBTN" prefHeight="30.0" prefWidth="92.0" selected="true" styleClass="radio-BTN" text="PREVIEW" toggleGroup="$mainMenu" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -49,9 +49,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXRadioButton>
-                  <JFXButton fx:id="settingMenuOpenBTN" focusTraversable="false" graphicTextGap="0.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="40.0" styleClass="btn-norm-color" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <JFXButton fx:id="settingMenuOpenBTN" alignment="CENTER" focusTraversable="false" graphicTextGap="0.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="40.0" styleClass="btn-norm-color" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <graphic>
-                        <Glyph fontFamily="FontAwesome" fontSize="18.0" icon="GEARS" styleClass="glyph" />
+                        <Glyph alignment="CENTER" fontFamily="FontAwesome" fontSize="18.0" icon="GEARS" styleClass="glyph" />
                      </graphic>
                      <cursor>
                         <Cursor fx:constant="HAND" />

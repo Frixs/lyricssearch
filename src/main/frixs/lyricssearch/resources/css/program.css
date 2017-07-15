@@ -1,5 +1,6 @@
 .menu-main {
     -fx-background-color: #0f9d58;
+    -fx-alignment: center-center;
 }
 
 .menu-main .radio-BTN {

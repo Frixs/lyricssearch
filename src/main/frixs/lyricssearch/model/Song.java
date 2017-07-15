@@ -62,4 +62,8 @@ public class Song {
     public int getId() {
         return id.get();
     }
+
+    public String getIdString() {
+        return "#"+ id.get();
+    }
 }
