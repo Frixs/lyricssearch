@@ -120,3 +120,37 @@
 #settingMenu .label {
     -fx-text-fill: #fff;
 }
+
+.table-view {
+    -fx-base: #efefef;
+    -fx-control-inner-background: #efefef;
+    -fx-background-color: #efefef;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #0f9d58;
+    -fx-border-insets: 0 20 1 10;
+    -fx-background-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 16;
+    -fx-font-family: "Tahoma";
+    -fx-text-fill: black;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}

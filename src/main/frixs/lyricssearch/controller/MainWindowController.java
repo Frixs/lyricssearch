@@ -22,6 +22,8 @@ public class MainWindowController {
     private ProgramController programController;
     /** reference to AddNewTab controller */
     private AddNewTabController addNewTabController = null;
+    /** reference to ManagementTab controller */
+    private ManagementTabController managementTabController = null;
     /** setting side menu width in pixels */
     private int settingSideMenuWidth = 350;
 
@@ -127,7 +129,10 @@ public class MainWindowController {
     @FXML
     void onActionManagementWindowBTN(ActionEvent event) {
         Log.getInstance().log(LogType.INFO, getClass().getName() +": MainWindow - "+ MainWindowTabType.MANAGEMENT.toString() +"Tab swapped.");
-        // TODO management pane
+        MainWindowTab window = new MainWindowTab(MainWindowTabType.MANAGEMENT);
+        this.managementTabController = (ManagementTabController) window.getController();
+        this.managementTabController.injectMainWindowController(this);
+        this.contentBP.setCenter(window.getTabReference());
     }
 
     // Getters
