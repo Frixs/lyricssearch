@@ -64,11 +64,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Data.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/service/Data.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1020">
+              <caret line="109" column="55" lean-forward="false" selection-start-line="109" selection-start-column="55" selection-end-line="109" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AddNewTabController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/AddNewTabController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="32" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+            <state relative-caret-position="663">
+              <caret line="57" column="12" lean-forward="false" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,53 +88,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/MainWindowController.java">
+      <file leaf-file-name="Song.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/model/Song.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="133" column="61" lean-forward="true" selection-start-line="133" selection-start-column="61" selection-end-line="133" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManagementTabController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/ManagementTabController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1374#1375#0" expanded="true" />
+                <element signature="e#1422#1423#0" expanded="true" />
+                <element signature="e#1460#1461#0" expanded="true" />
+                <element signature="e#1551#1552#0" expanded="true" />
+                <element signature="e#1886#1887#0" expanded="true" />
+                <element signature="e#1917#1918#0" expanded="true" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mainWindow.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/resources/css/mainWindow.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="143" column="0" lean-forward="true" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManagementTab.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/view/ManagementTab.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-              <folding>
-                <marker date="1500134861150" expanded="true" signature="743:763" ph="..." />
-                <marker date="1500134861150" expanded="true" signature="743:783" ph="..." />
-                <marker date="1500134861150" expanded="true" signature="743:798" ph="..." />
-                <marker date="1500134861150" expanded="true" signature="743:812" ph="..." />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
           </provider>
         </entry>
       </file>
@@ -140,7 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>remove</find>
       <find>addToQueue</find>
       <find>queue</find>
       <find>addSongToQueue</find>
@@ -170,6 +149,7 @@
       <find>class</find>
       <find>custom</find>
       <find>primaryStage</find>
+      <find>new song</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -210,7 +190,6 @@
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/view/SettingMenu.fxml" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/resources/css/program.css" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/model/Queue.java" />
-        <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/model/Song.java" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/view/AddNewTab.fxml" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/model/Log.java" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/model/LogType.java" />
@@ -228,11 +207,12 @@
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/model/CustomInformAlert.java" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/AddNewTabController.java" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/init/Program.java" />
-        <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/service/Data.java" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/view/ManagementTab.fxml" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/resources/css/mainWindow.css" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/ManagementTabController.java" />
+        <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/model/Song.java" />
+        <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/service/Data.java" />
       </list>
     </option>
   </component>
@@ -749,7 +729,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32834226" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15721925" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -758,6 +738,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25586355" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272727" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21162046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -776,7 +757,6 @@
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272727" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -1046,17 +1026,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/model/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="62" lean-forward="true" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
-          <folding>
-            <element signature="e#460#461#0" expanded="true" />
-            <element signature="e#529#530#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/resources/images/icon.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1066,34 +1035,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
           <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/service/Data.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1037">
-          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/AddNewTabController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="32" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/MainWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="133" column="61" lean-forward="true" selection-start-line="133" selection-start-column="61" selection-end-line="133" selection-end-column="61" />
           <folding />
         </state>
       </provider>
@@ -1130,10 +1071,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="133" column="61" lean-forward="true" selection-start-line="133" selection-start-column="61" selection-end-line="133" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/ManagementTabController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="510">
+          <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/model/Song.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1374#1375#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
+            <element signature="e#1460#1461#0" expanded="true" />
+            <element signature="e#1551#1552#0" expanded="true" />
+            <element signature="e#1886#1887#0" expanded="true" />
+            <element signature="e#1917#1918#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/AddNewTabController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="57" column="12" lean-forward="false" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/service/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1020">
+          <caret line="109" column="55" lean-forward="false" selection-start-line="109" selection-start-column="55" selection-end-line="109" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

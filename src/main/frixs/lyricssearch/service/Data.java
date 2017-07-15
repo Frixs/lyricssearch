@@ -16,6 +16,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 
 /**
  * @author Frixs
@@ -110,6 +111,8 @@ public class Data {
 
             for (Song song : songList) {
                 xMLStreamWriter.writeStartElement("song");
+                xMLStreamWriter.writeAttribute("id", Integer.toString(song.getId()));
+
                 xMLStreamWriter.writeStartElement("title");
                 xMLStreamWriter.writeCharacters(
                         song.getTitle()
@@ -203,6 +206,7 @@ public class Data {
         boolean bText           = false;
         String sTitle           = "";
         String sText            = "";
+        int iIdentifier         = Song.ID_NULL;
 
         try {
             XMLInputFactory factory     = XMLInputFactory.newInstance();
@@ -220,6 +224,9 @@ public class Data {
 
                         if (qName.equalsIgnoreCase("song")) {
                             //System.out.println("Start Element : song");
+                            Iterator<Attribute> attributes = startElement.getAttributes();
+                            iIdentifier = Integer.parseInt(attributes.next().getValue());
+                            //System.out.println("ID : " + iIdentifier);
                         } else if (qName.equalsIgnoreCase("title")) {
                             bTitle = true;
                         } else if (qName.equalsIgnoreCase("text")) {
@@ -251,10 +258,11 @@ public class Data {
                         break;
                 }
 
-                if (sTitle.length() > 0 && sText.length() > 0) {
-                    list.add(new Song(sTitle, sText));
+                if (sTitle.length() > 0 && sText.length() > 0 && iIdentifier > Song.ID_NULL) {
+                    list.add(new Song(sTitle, sText, iIdentifier));
                     sTitle = "";
                     sText  = "";
+                    iIdentifier = Song.ID_NULL;
                 }
             }
 
