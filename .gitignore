@@ -15,6 +15,7 @@
 *.war
 *.ear
 *.zip
+!out/artifacts/lyricssearch_publishable_jar/*.zip
 *.tar.gz
 *.rar
 
