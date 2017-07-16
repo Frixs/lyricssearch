@@ -94,6 +94,16 @@ public class Data {
     }
 
     /**
+     * Remove song from the list and from the data file
+     * @param song      song instance
+     */
+    public void removeSong(Song song) {
+        this.songList.remove(song);
+
+        this.writeNewDataFile(this.songList);
+    }
+
+    /**
      * Rewrite data file
      * @param songList      Song list
      */
@@ -111,7 +121,6 @@ public class Data {
 
             for (Song song : songList) {
                 xMLStreamWriter.writeStartElement("song");
-                xMLStreamWriter.writeAttribute("id", Integer.toString(song.getId()));
 
                 xMLStreamWriter.writeStartElement("title");
                 xMLStreamWriter.writeCharacters(
@@ -206,7 +215,6 @@ public class Data {
         boolean bText           = false;
         String sTitle           = "";
         String sText            = "";
-        int iIdentifier         = Song.ID_NULL;
 
         try {
             XMLInputFactory factory     = XMLInputFactory.newInstance();
@@ -224,9 +232,6 @@ public class Data {
 
                         if (qName.equalsIgnoreCase("song")) {
                             //System.out.println("Start Element : song");
-                            Iterator<Attribute> attributes = startElement.getAttributes();
-                            iIdentifier = Integer.parseInt(attributes.next().getValue());
-                            //System.out.println("ID : " + iIdentifier);
                         } else if (qName.equalsIgnoreCase("title")) {
                             bTitle = true;
                         } else if (qName.equalsIgnoreCase("text")) {
@@ -258,11 +263,10 @@ public class Data {
                         break;
                 }
 
-                if (sTitle.length() > 0 && sText.length() > 0 && iIdentifier > Song.ID_NULL) {
-                    list.add(new Song(sTitle, sText, iIdentifier));
+                if (sTitle.length() > 0 && sText.length() > 0) {
+                    list.add(new Song(sTitle, sText));
                     sTitle = "";
                     sText  = "";
-                    iIdentifier = Song.ID_NULL;
                 }
             }
 

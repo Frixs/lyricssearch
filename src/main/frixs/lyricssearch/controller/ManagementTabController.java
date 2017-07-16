@@ -1,14 +1,11 @@
 package main.frixs.lyricssearch.controller;
 
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Callback;
 import main.frixs.lyricssearch.model.ITabControllable;
 import main.frixs.lyricssearch.model.Log;
 import main.frixs.lyricssearch.model.LogType;
@@ -64,23 +61,11 @@ public class ManagementTabController implements ITabControllable {
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
 
         // Action column with buttons
-        TableColumn<Song, Boolean> actionCol = new TableColumn<>("");
+        TableColumn<Song, Song> actionCol = new TableColumn<>("");
         actionCol.setMinWidth(100);
         actionCol.setSortable(false);
-        // define a simple boolean cell value for the action column so that the column will only be shown for non-empty rows.
-        actionCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Song, Boolean>, ObservableValue<Boolean>>() {
-            @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Song, Boolean> features) {
-                return new SimpleBooleanProperty(features.getValue() != null);
-            }
-        });
-        // create a cell value factory with an add button for each row in the table.
-        actionCol.setCellFactory(new Callback<TableColumn<Song, Boolean>, TableCell<Song, Boolean>>() {
-            @Override
-            public TableCell<Song, Boolean> call(TableColumn<Song, Boolean> personBooleanTableColumn) {
-                return new ManageBTNsTableCell(songTableTV);
-            }
-        });
+        actionCol.setCellValueFactory(o -> new ReadOnlyObjectWrapper<>(o.getValue()));
+        actionCol.setCellFactory(param -> new ManageBTNsTableCell());
 
         // put all together
         this.songTableTV.getColumns().addAll(idColumn, titleColumn, actionCol);
