@@ -155,6 +155,10 @@
   -fx-alignment: center-left;
 }
 
+.table-row-cell {
+    -fx-background-insets: 0, 1;
+}
+
 .table-row-cell:selected:focused .table-cell {
     -fx-background-color: #dedede;
     -fx-border-color: #eee;
