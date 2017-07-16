@@ -64,23 +64,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ManagementTabController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/ManagementTabController.java">
+      <file leaf-file-name="Data.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/service/Data.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="59" column="35" lean-forward="true" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManageBTNsTableCell.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/service/ManageBTNsTableCell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="145" column="43" lean-forward="true" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
+            <state relative-caret-position="425">
+              <caret line="25" column="55" lean-forward="false" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -192,10 +180,10 @@
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/resources/css/mainWindow.css" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/ManagementTabController.java" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/model/Song.java" />
-        <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/service/Data.java" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/init/Program.java" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/model/CustomInformAlert.java" />
         <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/service/ManageBTNsTableCell.java" />
+        <option value="$PROJECT_DIR$/src/main/frixs/lyricssearch/service/Data.java" />
       </list>
     </option>
   </component>
@@ -720,7 +708,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26119402" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26066098" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21162046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1030,7 +1018,7 @@
         <state relative-caret-position="288">
           <caret line="82" column="66" lean-forward="true" selection-start-line="82" selection-start-column="66" selection-end-line="82" selection-end-column="66" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1061,16 +1049,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/ManagementTabController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="59" column="35" lean-forward="true" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/AddNewTabController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -1081,20 +1059,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/service/Data.java">
+    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/service/ManageBTNsTableCell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-308">
-          <caret line="101" column="32" lean-forward="true" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
+        <state relative-caret-position="1876">
+          <caret line="146" column="53" lean-forward="false" selection-start-line="146" selection-start-column="53" selection-end-line="146" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/service/ManageBTNsTableCell.java">
+    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/controller/ManagementTabController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="145" column="43" lean-forward="true" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
+        <state relative-caret-position="295">
+          <caret line="59" column="35" lean-forward="true" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/frixs/lyricssearch/service/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="55" lean-forward="false" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

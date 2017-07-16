@@ -16,14 +16,15 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 
 /**
  * @author Frixs
  */
 public class Data {
     /** singleton reference */
-    private static Data instance = null;
+    private static Data instance            = null;
+    /** if it is TRUE, all is ok. if it is false so there was a try to load/create a new empty data file */
+    private static boolean isDataFileFound  = true;
     /** songList of all songs */
     private ObservableList<Song> songList   = FXCollections.observableArrayList();
     /** observable queue */
@@ -229,10 +230,18 @@ public class Data {
         String sText            = "";
 
         try {
+            File file = new File(new File("./").getCanonicalPath() + Program.DATA_PATH);
+
+            // first of all, check if file exists
+            if(Data.isDataFileFound && (!file.exists() || file.isDirectory())) {
+                Log.getInstance().log(LogType.INFO, getClass().getName() +": No data file found. New one created!");
+                new CustomInformAlert(Alert.AlertType.INFORMATION, Program.APP_NAME +" | "+ Alert.AlertType.INFORMATION.toString(), "No data file found. New one created!", "There was no data file.");
+                writeEmptyDataFile();
+                return this.getStoredSongs();
+            }
+
             XMLInputFactory factory     = XMLInputFactory.newInstance();
-            XMLEventReader eventReader  = factory.createXMLEventReader(new FileReader(
-                    new File(new File("./").getCanonicalPath() + Program.DATA_PATH)
-            ));
+            XMLEventReader eventReader  = factory.createXMLEventReader(new FileReader(file));
 
             while (eventReader.hasNext()) {
                 XMLEvent event = eventReader.nextEvent();
@@ -293,6 +302,46 @@ public class Data {
         }
 
         return list;
+    }
+
+    private void writeEmptyDataFile() {
+        Data.isDataFileFound = false;
+        BufferedWriter bw    = null;
+
+        try {
+            StringWriter stringWriter = new StringWriter();
+
+            XMLOutputFactory xMLOutputFactory   = XMLOutputFactory.newInstance();
+            XMLStreamWriter xMLStreamWriter     = xMLOutputFactory.createXMLStreamWriter(stringWriter);
+
+            xMLStreamWriter.writeStartDocument();
+            xMLStreamWriter.writeStartElement("songs");
+
+            xMLStreamWriter.writeEndElement();
+            xMLStreamWriter.writeEndDocument();
+
+            xMLStreamWriter.flush();
+            xMLStreamWriter.close();
+
+            String xmlString = stringWriter.getBuffer().toString();
+            stringWriter.close();
+
+            // write content to the file
+            bw = new BufferedWriter(new FileWriter(new File(new File("./").getCanonicalPath() + Program.DATA_PATH)));
+            bw.write(xmlString);
+            bw.close();
+
+        } catch (XMLStreamException e) {
+            Log.getInstance().log(LogType.SEVERE, getClass().getName() +": Error occurs during creating empty data file!");
+            e.printStackTrace();
+            new CustomInformAlert(Alert.AlertType.ERROR, Program.APP_NAME +" | "+ Alert.AlertType.ERROR.toString(), "Error occurs during creating empty data file!", e.getMessage());
+            Platform.exit();
+        } catch (IOException e) {
+            Log.getInstance().log(LogType.SEVERE, getClass().getName() +": Error occurs during creating empty data file!");
+            e.printStackTrace();
+            new CustomInformAlert(Alert.AlertType.ERROR, Program.APP_NAME +" | "+ Alert.AlertType.ERROR.toString(), "Error occurs during creating empty data file!", e.getMessage());
+            Platform.exit();
+        }
     }
 
     // Getters
