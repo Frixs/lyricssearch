@@ -20,6 +20,11 @@ public class Song {
         this(copyInstance.getTitle(), copyInstance.getText());
     }
 
+    public void update(Song newSong) {
+        this.setTitle(newSong.getTitle());
+        this.setText(newSong.getText());
+    }
+
     // Getters & Setters
     public String getTitle() {
         return title.get();

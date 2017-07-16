@@ -94,11 +94,23 @@ public class Data {
     }
 
     /**
+     * Update song in the list and in the data file
+     * @param oldSong      original song instance
+     * @param newSong      updated song instance
+     */
+    public void updateSong(Song oldSong, Song newSong) {
+        oldSong.update(newSong);
+
+        this.writeNewDataFile(this.songList);
+    }
+
+    /**
      * Remove song from the list and from the data file
      * @param song      song instance
      */
     public void removeSong(Song song) {
         this.songList.remove(song);
+        this.queueList.remove(song);
 
         this.writeNewDataFile(this.songList);
     }

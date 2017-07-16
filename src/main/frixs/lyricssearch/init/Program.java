@@ -21,7 +21,7 @@ import java.io.IOException;
 public class Program extends Application {
 
     public static final String      APP_NAME        = "LyricsSearch";
-    public static final String      VERSION         = "0.9.0 (beta)";
+    public static final String      VERSION         = "0.9.1 (beta)";
     public static final String      VERSION_PREFIX  = "v";
     /** Application window min height */
     public static final int         MIN_HEIGHT      = 480;
@@ -31,6 +31,8 @@ public class Program extends Application {
     public static final String      PATH_TO_SRC     = "/main/frixs/lyricssearch/";
     /** Data path from the root structure (or from the application file) */
     public static final String      DATA_PATH       = File.separator + "lyricssearch_data.xml";
+    /** Application icon */
+    public static final Image       APP_ICON        = new Image(Program.class.getResourceAsStream(Program.PATH_TO_SRC +"resources/images/icon.png"));
 
     private Stage                   primaryStage;
     private Parent                  rootLayout;
@@ -63,9 +65,8 @@ public class Program extends Application {
 
             ProgramController programController = loader.getController();
 
-            //set icon of the application
-            Image applicationIcon = new Image(getClass().getResourceAsStream(Program.PATH_TO_SRC +"resources/images/icon.png"));
-            primaryStage.getIcons().add(applicationIcon);
+            // set icon of the application
+            primaryStage.getIcons().add(APP_ICON);
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout, MIN_WIDTH, MIN_HEIGHT);

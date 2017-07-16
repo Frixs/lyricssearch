@@ -1,6 +1,9 @@
 package main.frixs.lyricssearch.model;
 
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import main.frixs.lyricssearch.init.Program;
 
 /**
  * @author Frixs
@@ -18,6 +21,7 @@ public class CustomInformAlert {
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(context);
+        ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(Program.APP_ICON);
         alert.showAndWait();
     }
 }

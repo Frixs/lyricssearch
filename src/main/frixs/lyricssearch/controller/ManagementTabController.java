@@ -50,14 +50,9 @@ public class ManagementTabController implements ITabControllable {
      * Initializes song table with its parameters and event listeners
      */
     private void buildSongTable() {
-        // ID column
-        TableColumn<Song, String> idColumn = new TableColumn<>("ID");
-        idColumn.setMinWidth(20);
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("idString"));
-
         // Title column
         TableColumn<Song, String> titleColumn = new TableColumn<>("Title");
-        titleColumn.setMinWidth(50);
+        titleColumn.setMinWidth(150);
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
 
         // Action column with buttons
@@ -68,7 +63,7 @@ public class ManagementTabController implements ITabControllable {
         actionCol.setCellFactory(param -> new ManageBTNsTableCell());
 
         // put all together
-        this.songTableTV.getColumns().addAll(idColumn, titleColumn, actionCol);
+        this.songTableTV.getColumns().addAll(titleColumn, actionCol);
 
         Log.getInstance().log(LogType.CONFIG, getClass().getName() +": SongTableTV view created!");
     }
