@@ -47,6 +47,13 @@
                </children>
             </AnchorPane>
          </center>
+         <bottom>
+            <AnchorPane prefHeight="32.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="copyrightLabel" alignment="CENTER" focusTraversable="false" styleClass="copyright" text="\@ Frixs" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+               </children>
+            </AnchorPane>
+         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>

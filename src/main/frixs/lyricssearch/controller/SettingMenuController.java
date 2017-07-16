@@ -7,7 +7,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
+import main.frixs.lyricssearch.init.Program;
 import main.frixs.lyricssearch.model.Log;
 import main.frixs.lyricssearch.model.LogType;
 
@@ -26,6 +28,8 @@ public class SettingMenuController {
     @FXML private JFXSlider textSizeSLIDER;
     /** Dark theme toggle BTN */
     @FXML private JFXToggleButton darkThemeBTN;
+    /** copyright label */
+    @FXML private Label copyrightLabel;
 
     /**
      * default initialize
@@ -34,6 +38,8 @@ public class SettingMenuController {
     private void initialize() {
         setDragEventTextWidthSLIDER();
         setDragEventTextSizeSLIDER();
+
+        copyrightLabel.setText(Program.COPYRIGHT);
     }
 
     /**

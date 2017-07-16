@@ -21,8 +21,9 @@ import java.io.IOException;
 public class Program extends Application {
 
     public static final String      APP_NAME        = "LyricsSearch";
-    public static final String      VERSION         = "0.9.1 (beta)";
+    public static final String      VERSION         = "0.9.2 (beta)";
     public static final String      VERSION_PREFIX  = "v";
+    public static final String      COPYRIGHT       = "© Frixs Dotlog";
     /** Application window min height */
     public static final int         MIN_HEIGHT      = 480;
     /** Application window min width */

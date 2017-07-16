@@ -33,6 +33,12 @@
     -fx-background-radius: 0;
 }
 
+.copyright {
+    -fx-font-family: "Tahoma";
+    -fx-text-fill: #0d864c !important;
+    -fx-font-size: 10;
+}
+
 /**/
 /*  SCROLLBAR / SCROLLPANE */
 /**/
