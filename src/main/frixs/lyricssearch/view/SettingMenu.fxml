@@ -36,21 +36,46 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <Label styleClass="lbl" text="TEXT WIDTH" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                  <JFXSlider fx:id="textWidthSLIDER" focusTraversable="false" value="100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0" />
-                  <Label styleClass="lbl" text="TEXT SIZE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" />
-                  <JFXSlider fx:id="textSizeSLIDER" focusTraversable="false" max="72.0" min="8.0" value="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0" />
-                  <JFXToggleButton fx:id="darkThemeBTN" focusTraversable="false" onAction="#onActionDarkThemeBTN" text="DARK THEME" toggleColor="#49da5f" toggleLineColor="#164d32" unToggleLineColor="#164d32" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="110.0">
+                  <JFXSlider fx:id="textWidthSLIDER" focusTraversable="false" prefHeight="30.0" value="100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0" />
+                  <Label styleClass="lbl" text="TEXT SIZE" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="76.0" />
+                  <JFXSlider fx:id="textSizeSLIDER" focusTraversable="false" max="72.0" min="8.0" prefHeight="30.0" value="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="96.0" />
+                  <JFXToggleButton fx:id="darkThemeBTN" focusTraversable="false" onAction="#onActionDarkThemeBTN" text="DARK THEME" toggleColor="#49da5f" toggleLineColor="#164d32" unToggleLineColor="#164d32" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="144.0">
                      <styleClass>
                         <String fx:value="btn-norm-color" />
                         <String fx:value="lbl" />
                      </styleClass></JFXToggleButton>
+                  <Label styleClass="lbl" text="ALIGNMENT" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="212.0" />
+                  <JFXButton focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionAlignLeftBTN" prefHeight="25.0" prefWidth="30.0" styleClass="btn-norm-color" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="235.0">
+                     <graphic>
+                        <Glyph alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" fontFamily="FontAwesome" graphicTextGap="0.0" icon="ALIGN_LEFT" styleClass="glyph" translateX="0.0" translateY="0.0" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionAlignCenterBTN" prefHeight="25.0" prefWidth="30.0" styleClass="btn-norm-color" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="235.0">
+                     <graphic>
+                        <Glyph alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" fontFamily="FontAwesome" graphicTextGap="0.0" icon="ALIGN_CENTER" styleClass="glyph" translateX="0.0" translateY="0.0" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onActionAlignRightBTN" prefHeight="25.0" prefWidth="30.0" styleClass="btn-norm-color" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="235.0">
+                     <graphic>
+                        <Glyph alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" fontFamily="FontAwesome" graphicTextGap="0.0" icon="ALIGN_RIGHT" styleClass="glyph" translateX="0.0" translateY="0.0" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
                </children>
             </AnchorPane>
          </center>
          <bottom>
             <AnchorPane prefHeight="32.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="copyrightLabel" alignment="CENTER" focusTraversable="false" styleClass="copyright" text="\@ Frixs" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                  <Label fx:id="copyrightLabel" alignment="CENTER" focusTraversable="false" styleClass="copyright" text="Frixs" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
                </children>
             </AnchorPane>
          </bottom>

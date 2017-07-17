@@ -89,7 +89,14 @@ public class SearchMenuController {
                 if(newValue == null)
                     return;
 
+                // load song
                 previewTabController.loadSong(newValue);
+                // close
+                previewTabController.getSearchMenuDrawer().close();
+                previewTabController.getSearchMenuDrawer().setOnDrawerClosed(event -> {
+                    previewTabController.getSearchMenuDrawer().setTranslateX(-previewTabController.getSearchSideMenuWidth());
+                });
+                // log
                 Log.getInstance().log(LogType.INFO, getClass().getName() + ": Current song changed to " + newValue.getTitle() + ".");
             }
         });

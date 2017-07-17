@@ -19,6 +19,8 @@ import main.frixs.lyricssearch.model.LogType;
 public class SettingMenuController {
     /** reference to MainWindow controller */
     private MainWindowController    mainWindowController;
+    /** lyrics alignment setting */
+    private String textAlignmentSetting = "CENTER";
 
     /** settingMenu close BTN */
     @FXML private JFXButton settingMenuCloseBTN;
@@ -60,6 +62,7 @@ public class SettingMenuController {
     public void reloadSettings() {
         setTextWidth(getTextWidth());
         setTextSize(getTextSize());
+        setTextAlignment();
         // TODO dark theme switch
     }
 
@@ -99,6 +102,24 @@ public class SettingMenuController {
         Log.getInstance().log(LogType.INFO, getClass().getName() +": Dark theme button was switched.");
     }
 
+    @FXML
+    void onActionAlignCenterBTN(ActionEvent event) {
+        this.textAlignmentSetting = "CENTER";
+        this.setTextAlignment();
+    }
+
+    @FXML
+    void onActionAlignLeftBTN(ActionEvent event) {
+        this.textAlignmentSetting = "LEFT";
+        this.setTextAlignment();
+    }
+
+    @FXML
+    void onActionAlignRightBTN(ActionEvent event) {
+        this.textAlignmentSetting = "RIGHT";
+        this.setTextAlignment();
+    }
+
     // Getters
     public JFXButton getSettingMenuCloseBTN() {
         return settingMenuCloseBTN;
@@ -125,5 +146,9 @@ public class SettingMenuController {
 
     public void setTextSize(int size) {
         mainWindowController.getPreviewTabController().getLyricsTextTF().setStyle("-fx-font-size:"+ size);
+    }
+
+    public void setTextAlignment() {
+        mainWindowController.getPreviewTabController().getLyricsTextTF().setStyle("-fx-text-alignment:"+ this.textAlignmentSetting);
     }
 }

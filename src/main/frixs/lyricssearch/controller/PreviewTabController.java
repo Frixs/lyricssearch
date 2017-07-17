@@ -228,4 +228,12 @@ public class PreviewTabController implements ITabControllable {
     public ScrollPane getLyricsTextSP() {
         return this.textSP;
     }
+
+    public JFXDrawer getSearchMenuDrawer() {
+        return searchMenuDrawer;
+    }
+
+    public int getSearchSideMenuWidth() {
+        return searchSideMenuWidth;
+    }
 }
