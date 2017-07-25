@@ -61,8 +61,8 @@ public class SettingMenuController {
      */
     public void reloadSettings() {
         setTextWidth(getTextWidth());
-        setTextSize(getTextSize());
         setTextAlignment();
+        setTextSize(getTextSize());
         // TODO dark theme switch
     }
 
@@ -145,10 +145,21 @@ public class SettingMenuController {
     }
 
     public void setTextSize(int size) {
-        mainWindowController.getPreviewTabController().getLyricsTextTF().setStyle("-fx-font-size:"+ size);
+        setStyles(size, this.textAlignmentSetting);
     }
 
     public void setTextAlignment() {
-        mainWindowController.getPreviewTabController().getLyricsTextTF().setStyle("-fx-text-alignment:"+ this.textAlignmentSetting);
+        setStyles(getTextSize(), this.textAlignmentSetting);
+    }
+
+    /**
+     * Set styles in 1 method
+     * @param fontSize      font size
+     * @param textAlign     text align
+     */
+    private void setStyles(int fontSize, String textAlign) {
+        mainWindowController.getPreviewTabController().getLyricsTextTF().setStyle(
+                "-fx-font-size:"+ fontSize +";-fx-text-alignment:"+ textAlign
+        );
     }
 }
