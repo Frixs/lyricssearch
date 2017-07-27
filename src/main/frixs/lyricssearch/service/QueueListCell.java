@@ -34,6 +34,8 @@ public class QueueListCell extends JFXListCell<Song> {
             Glyph glyph;
 
             hbox.getStyleClass().add("hbox");
+            // label styles
+            label.setStyle("-fx-max-width: 195;");
             // GLYPH styles
             glyph = Glyph.create("FontAwesome|CLOSE");
             glyph.setTranslateX(-1);

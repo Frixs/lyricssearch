@@ -32,7 +32,7 @@ public class PreviewTabController implements ITabControllable {
     /** reference to MainWindow controller */
     private MainWindowController mainWindowController;
     /** queue pane width in pixels */
-    private int queuePaneWidth = 250;
+    private int queuePaneWidth = 260;
     /** search side menu width in pixels */
     private int searchSideMenuWidth = 260;
     /** current displayed song */

@@ -15,6 +15,8 @@ import main.frixs.lyricssearch.service.Data;
 import main.frixs.lyricssearch.model.Log;
 import main.frixs.lyricssearch.model.LogType;
 
+import java.text.Normalizer;
+
 /**
  * @author Frixs
  */
@@ -119,9 +121,16 @@ public class SearchMenuController {
                 }
 
                 // Compare title of every song with filter text.
-                String lowerCaseFilter = newValue.toLowerCase();
+                String lowerCaseFilter = Normalizer.normalize(
+                        newValue.toLowerCase(),
+                        Normalizer.Form.NFD
+                ).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+                String searchedString  = Normalizer.normalize(
+                        song.getTitle().toLowerCase(),
+                        Normalizer.Form.NFD
+                ).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
 
-                if (song.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+                if (searchedString.contains(lowerCaseFilter)) {
                     return true; // Filter matches title.
                 } else if (searchFulltextCheckbox.isSelected() && song.getText().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches title or part of the text.

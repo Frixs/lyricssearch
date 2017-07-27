@@ -33,6 +33,8 @@ public class SearchListCell extends JFXListCell<Song> {
             JFXButton btn   = new JFXButton();
 
             hbox.getStyleClass().add("hbox");
+            // label styles
+            label.setStyle("-fx-max-width: 195;");
             // BTN styles
             btn.setGraphic(Glyph.create("FontAwesome|KEY"));
             btn.setPrefWidth(30);
