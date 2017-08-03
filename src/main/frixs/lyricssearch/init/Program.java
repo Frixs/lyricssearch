@@ -20,20 +20,28 @@ import java.io.IOException;
  */
 public class Program extends Application {
 
-    public static final String      APP_NAME        = "LyricsSearch";
-    public static final String      VERSION         = "0.9.3c (beta)";
-    public static final String      VERSION_PREFIX  = "v";
-    public static final String      COPYRIGHT       = "© Frixs Dotlog";
+    public static final String      APP_NAME                        = "LyricsSearch";
+    public static final String      VERSION                         = "0.9.4 (beta)";
+    public static final String      VERSION_PREFIX                  = "v";
+    public static final String      COPYRIGHT                       = "© Frixs Dotlog";
     /** Application window min height */
-    public static final int         MIN_HEIGHT      = 480;
+    public static final int         MIN_HEIGHT                      = 480;
     /** Application window min width */
-    public static final int         MIN_WIDTH       = 640;
+    public static final int         MIN_WIDTH                       = 640;
     /** Package structure path */
-    public static final String      PATH_TO_SRC     = "/main/frixs/lyricssearch/";
+    public static final String      PATH_TO_SRC                     = "/main/frixs/lyricssearch/";
     /** Data path from the root structure (or from the application file) */
-    public static final String      DATA_PATH       = File.separator + "lyricssearch_data.xml";
+    public static final String      DATA_PATH                       = File.separator + "lyricssearch_data.xml";
     /** Application icon */
-    public static final Image       APP_ICON        = new Image(Program.class.getResourceAsStream(Program.PATH_TO_SRC +"resources/images/icon.png"));
+    public static final Image       APP_ICON                        = new Image(Program.class.getResourceAsStream(Program.PATH_TO_SRC +"resources/images/icon.png"));
+    /** Preview text default color */
+    public static final String      SETTING_PREVIEW_TEXT_COLOR      = "#000";
+    /** Preview text dark theme color */
+    public static final String      SETTING_PREVIEW_TEXT_COLOR_DARK = "#fff";
+    /** Preview background text default color */
+    public static final String      SETTING_PREVIEW_BG_COLOR        = "#fff";
+    /** Preview background text dark theme color */
+    public static final String      SETTING_PREVIEW_BG_COLOR_DARK   = "#333";
 
     private Stage                   primaryStage;
     private Parent                  rootLayout;

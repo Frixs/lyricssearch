@@ -52,7 +52,12 @@
 
 #textSP .text-preview .text-box {
     -fx-font-family: "Tahoma";
+    -fx-fill: #000;
+}
 
+#textSP .text-preview .text-box-dark {
+    -fx-font-family: "Tahoma";
+    -fx-fill: #fff;
 }
 
 #searchFulltextCheckbox {

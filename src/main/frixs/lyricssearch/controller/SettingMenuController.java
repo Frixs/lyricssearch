@@ -97,9 +97,7 @@ public class SettingMenuController {
     // Events
     @FXML
     void onActionDarkThemeBTN(ActionEvent event) {
-        // TODO dark theme switch
-
-        Log.getInstance().log(LogType.INFO, getClass().getName() +": Dark theme button was switched.");
+        this.setThemeColor();
     }
 
     @FXML
@@ -145,11 +143,15 @@ public class SettingMenuController {
     }
 
     public void setTextSize(int size) {
-        setStyles(size, this.textAlignmentSetting);
+        setStyles(size, this.textAlignmentSetting, isDarkTheme());
+    }
+
+    public void setThemeColor() {
+        setStyles(getTextSize(), this.textAlignmentSetting, isDarkTheme());
     }
 
     public void setTextAlignment() {
-        setStyles(getTextSize(), this.textAlignmentSetting);
+        setStyles(getTextSize(), this.textAlignmentSetting, isDarkTheme());
     }
 
     /**
@@ -157,9 +159,31 @@ public class SettingMenuController {
      * @param fontSize      font size
      * @param textAlign     text align
      */
-    private void setStyles(int fontSize, String textAlign) {
+    private void setStyles(int fontSize, String textAlign, boolean isThemeDark) {
+        String cText = Program.SETTING_PREVIEW_TEXT_COLOR;
+        String cBG   = Program.SETTING_PREVIEW_BG_COLOR;
+
+        if (isThemeDark) {
+            cText = Program.SETTING_PREVIEW_TEXT_COLOR_DARK;
+            cBG   = Program.SETTING_PREVIEW_BG_COLOR_DARK;
+        }
+
         mainWindowController.getPreviewTabController().getLyricsTextTF().setStyle(
-                "-fx-font-size:"+ fontSize +";-fx-text-alignment:"+ textAlign
+                "-fx-font-size:"+ fontSize
+                +";-fx-text-alignment:"+ textAlign
+                +";-fx-background-color:"+ cBG
         );
+
+        mainWindowController.getPreviewTabController().getLyricsTextSP().getParent().setStyle(
+                "-fx-background-color:"+ cBG
+        );
+
+        for (int i = 0 ;i < mainWindowController.getPreviewTabController().getLyricsTextTF().getChildren().size(); i++) {
+            mainWindowController.getPreviewTabController().getLyricsTextTF().getChildren().get(i).setStyle("-fx-fill:"+ cText);
+        }
+    }
+
+    public boolean isDarkTheme() {
+        return this.darkThemeBTN.isSelected();
     }
 }
